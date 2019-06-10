@@ -5,39 +5,54 @@
  */
 package partygame1;
 
-import java.awt.Graphics;
+import java.awt.*;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
-/**
- *
- * @author Yasuki Wu
- */
-public class Game implements Runnable{
+public class Game implements Runnable {
+
     private Display display;
-    private int width, height;
-    private String title;
+    public int width, height;
+    public String title;
+
     private Thread thread;
     private boolean running = false;
-    private BufferStrategy bStrat;
+
+    private BufferStrategy bStrat; 
     private Graphics graph;
-    public Game(String t, int w, int h){
-        title = t;
-        width = w;
-        height = h;
+    private BufferedImage image;
+
+    private State gameState;
+
     
+    public Game(String title, int width, int height)
+    {
+        this.width = width;
+        this.height = height;
+        this.title = title;
+
     }
-    
-    private void init(){
+
+    private void init()
+    {
         display = new Display(title, width, height);
+        gameState = new GameState(this);
+        State.setState(gameState);
         
     }
-    
-    private void tick(){
-        
-        
+
+
+    private void tick()
+    {
+        if (State.getState() != null)
+        {
+            State.getState().tick();
+        }
+
     }
-    
-    private void render(){
+
+    private void render()
+    {
         bStrat = display.getCanvas().getBufferStrategy();
         if( bStrat == null)
         {
@@ -45,16 +60,28 @@ public class Game implements Runnable{
             return;
         }
         graph = bStrat.getDrawGraphics();
-        
-        
+
+        graph.clearRect(0,0,width,height);
+
+  
+                
+        if (State.getState() != null)
+        {
+            State.getState().render(graph);
+        }
+
+
+
         bStrat.show();
         graph.dispose();
+
     }
-    
-    public void run(){
+
+    public void run()
+    {
         init();
 
-        int fps = 60;  //Times running tick and render every second
+        int fps = 40;  //Times running tick and render every second
         double tickTime = 1000000000/ fps; // time in nano seconds to execute tick and render
         double delta = 0;
         long now;
@@ -85,10 +112,13 @@ public class Game implements Runnable{
 
 
         stop();
-        
+
     }
-    
-    public synchronized void start(){
+
+
+
+    public synchronized void start()
+    {
         if(running)
         {
             return;
@@ -96,10 +126,11 @@ public class Game implements Runnable{
         running = true;
         thread = new Thread(this);
         thread.start();
-        
+
     }
-    
-    public synchronized void stop(){
+
+    public synchronized void stop()
+    {
         if(!running)
         {
             return;
@@ -110,6 +141,8 @@ public class Game implements Runnable{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        
+
     }
+
+
 }
