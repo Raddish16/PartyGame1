@@ -15,7 +15,8 @@ public class PartyGame1 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+       Game game = new Game("pGame",1400,700);
+       game.start();
     }
     
 }
