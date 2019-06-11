@@ -7,18 +7,19 @@ Deflect projectiles like pong with a movable charachter
 - Toggle "shield" on and off. Shield is a front-facing rectangle in front which can reflect projectiles like pong would
 - Shield drains when on, recharges when off
 - When shield is off, you can shoot projectiles with your charachter
+- Projectiles will keep bouncing off walls and shields
 - As game continues, density of projectiles increases until one player left standing
 - Powerups like increased firerate, increased projecitle speed, wider shield, invulnerability, etc
 - Alternate game mode could include launching yourself instead of launching projectiles
 
 Aircraft game with teams of 2
-- One player controls the flight and forward facing weapons, the other is a gunner controlling a turret
-- One mode is versus where the objective is to shoot down the other players planes
+- One player controls the flight and forward facing weapons, the other is a gunner controlling a turret, like WWII bombers
+- One mode is versus where the objective is to shoot down the other players' planes
 - Second mode could be a "cooperative" mode where every player is on the same side, trying to reach a destination while
   being attacked by smaller planes, whoever makes it first, or the last plane alive, is the winner
 - Potential issues include making an "AI" for the small attackers
 - Certain inputs for evasive manuevers
-- Rechargeable boost, recharge increased when killing an enemy
+- Rechargeable speed boost, recharge increased when killing an enemy
 - Various weapons/planes
 - Top-down view and controls would be easiest to implement, controls like the game Luftrausers would be a lot more fun
 
