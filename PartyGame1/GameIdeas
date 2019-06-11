@@ -2,14 +2,14 @@ Game ideas
 
 Yasuki's
 
-Deflect projectiles like pong with a movable charachter
-- Each player controls a charachter with control stick 1, aim with control stick 2
+Deflect projectiles like pong with a movable character
+- Each player controls a character with control stick 1, aim with control stick 2
 - Toggle "shield" on and off. Shield is a front-facing rectangle in front which can reflect projectiles like pong would
 - Shield drains when on, recharges when off
-- When shield is off, you can shoot projectiles with your charachter
+- When shield is off, you can shoot projectiles with your character
 - Projectiles will keep bouncing off walls and shields
 - As game continues, density of projectiles increases until one player left standing
-- Powerups like increased firerate, increased projecitle speed, wider shield, invulnerability, etc
+- Powerups like increased firerate, increased projectile speed, wider shield, invulnerability, etc
 - Alternate game mode could include launching yourself instead of launching projectiles
 
 Aircraft game with teams of 2
