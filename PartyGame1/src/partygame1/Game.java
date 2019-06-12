@@ -81,7 +81,7 @@ public class Game implements Runnable {
     {
         init();
 
-        int fps = 40;  //Times running tick and render every second
+        int fps = 60;  //Times running tick and render every second
         double tickTime = 1000000000/ fps; // time in nano seconds to execute tick and render
         double delta = 0;
         long now;
