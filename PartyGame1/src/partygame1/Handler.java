@@ -12,10 +12,12 @@ package partygame1;
 public class Handler {
 
     private Game game;
+    private String statename = "";
 
     // until needed private World world;
     public Handler(Game game) {
         this.game = game;
+        
     }
 
     public int getWidth() {

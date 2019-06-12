@@ -54,7 +54,8 @@ public class Game implements Runnable {
 
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
-        State.setState(gameState);
+        State.setState(menuState);
+        
         Assets.init();
 
     }
@@ -162,5 +163,8 @@ public class Game implements Runnable {
 
     public MouseManager getMouseManager() {
         return mouseManager;
+    }
+    public State getState(){
+        return State.getState();
     }
 }
