@@ -38,6 +38,7 @@ public class Game implements Runnable {
         display = new Display(title, width, height);
         gameState = new GameState(this);
         State.setState(gameState);
+        Assets.init();
         
     }
 

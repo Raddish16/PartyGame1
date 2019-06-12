@@ -20,14 +20,6 @@ public class GameState extends State{
     public GameState(Game game){
         super(game);
         
-        //fills testMouse with sprites from the mouseSheet sprite sheet
-        sheet = new SpriteSheet(imageLoader.loadImage("/textures/mouseSheet.png"));
-        testMouse = new ArrayList<BufferedImage>();
-        for(int y = 0; y<104;y+=26){
-            for(int x = 0; x<104;x+=26){
-                testMouse.add(sheet.crop(x, y, 26, 26));
-            }
-        }
     }
     
     
@@ -40,7 +32,7 @@ public class GameState extends State{
     
     public void render(Graphics graph){
         //test image
-        graph.drawImage(testMouse.get((int)testCount/30), 300, 300, null);
+        graph.drawImage(Assets.mouse.get((int)testCount/30), 300, 300, null);
         
     }
 }
