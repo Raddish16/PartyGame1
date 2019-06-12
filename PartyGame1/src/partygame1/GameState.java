@@ -6,24 +6,26 @@
 package partygame1;
 
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
 
 /**
  *
  * @author Yasuki Wu
  */
 public class GameState extends State{
-    
+    private BufferedImage image;
     public GameState(Game game){
         super(game);
-        
+        image =  imageLoader.loadImage("/textures/New Piskel-2.png");
     }
     public void tick(){
         
         
     }
 
-    public void render(Graphics g){
-        
+    public void render(Graphics graph){
+        //test image
+        graph.drawImage(image, 300, 300, null);
         
     }
 }
