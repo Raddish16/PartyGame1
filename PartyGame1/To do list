@@ -1,6 +1,7 @@
 To do list
 
 Create import file for images(yasuki-finished today, if you run the program the animated mouse is rendered on the screen as a test)
+Why is one mouse saying "ass"
 Minigame classes which extends gamestate? Gamestate to manage the overall party game, and minigame classes can be loaded by it. 
 Decide which games to create
 Work out game mechanics
