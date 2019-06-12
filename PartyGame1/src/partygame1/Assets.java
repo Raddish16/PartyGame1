@@ -13,11 +13,12 @@ import java.util.ArrayList;
  * @author Yasuki Wu
  */
 public class Assets {
-
+    private static final int width = 32, height = 32;
     private static SpriteSheet sheet;
     public static ArrayList<BufferedImage> mouse, madmouse, normouse;//easier to iterate through
     public static BufferedImage[][] mouse2;//easier to reference
-
+    public static BufferedImage[]startBtn;
+    
     public static void init() {
         sheet = new SpriteSheet(imageLoader.loadImage("/textures/mouseSheet.png"));
         mouse = new ArrayList<BufferedImage>();

@@ -48,9 +48,9 @@ public class Player extends Creature {
     public void render(Graphics g) {
         if (handler.getMouseManager().isLeftPressed()) {
             //I want it to do the initial click as him getting bopped on the head, I can't figure it out
-            
+
             g.drawImage(Assets.madmouse.get((int) count % 8), (int) x, (int) y, 70, 70, null);
-            
+
         } else {
             g.drawImage(Assets.normouse.get((int) count % 8), (int) x, (int) y, 70, 70, null);
         }
