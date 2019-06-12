@@ -23,33 +23,56 @@ public class Game implements Runnable {
     private BufferedImage image;
 
     private State gameState;
-
+    private State menuState;
+    
+    private KeyManager keyManager;
+    private MouseManager mouseManager;
+    
+    //private GameCamera gameCamera;
+    
+    private Handler handler;
     
     public Game(String title, int width, int height)
     {
         this.width = width;
         this.height = height;
         this.title = title;
-
+        keyManager = new KeyManager();
+        mouseManager = new MouseManager();
     }
 
     private void init()
     {
         display = new Display(title, width, height);
-        gameState = new GameState(this);
+        
+        display.getFrame().addKeyListener(keyManager);//Get jframe, add keylistener which allows access to keyboard
+        
+        display.getFrame().addMouseListener(mouseManager);//Need to add both in canvas and jframe to work properly
+        display.getFrame().addMouseMotionListener(mouseManager);
+        
+        display.getCanvas().addMouseListener(mouseManager);
+        display.getCanvas().addMouseMotionListener(mouseManager);
+        
+        handler = new Handler(this);
+        
+        gameState = new GameState(handler);
+        menuState = new MenuState(handler);
         State.setState(gameState);
         Assets.init();
+        
         
     }
 
 
     private void tick()
     {
+        keyManager.tick();
+        
         if (State.getState() != null)
         {
             State.getState().tick();
         }
-
+        
     }
 
     private void render()
@@ -69,8 +92,9 @@ public class Game implements Runnable {
         if (State.getState() != null)
         {
             State.getState().render(graph);
+            
         }
-
+        
 
 
         bStrat.show();
@@ -116,7 +140,7 @@ public class Game implements Runnable {
 
     }
 
-
+    
 
     public synchronized void start()
     {
@@ -144,6 +168,22 @@ public class Game implements Runnable {
         }
 
     }
-
-
+    
+    //getters
+    
+    public int getWidth(){
+        return width;
+    }
+    
+    public int getHeight(){
+        return height;
+    }
+    
+    public KeyManager getKeyManager(){
+        return keyManager;
+    }
+    
+    public MouseManager getMouseManager(){
+        return mouseManager;
+    }
 }

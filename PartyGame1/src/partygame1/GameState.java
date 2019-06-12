@@ -14,25 +14,30 @@ import java.util.ArrayList;
  * @author Yasuki Wu
  */
 public class GameState extends State{
+    
     private SpriteSheet sheet;
     private ArrayList<BufferedImage> testMouse;
+    private Player Player1;
     
-    public GameState(Game game){
-        super(game);
-        
+    public GameState(Handler handler){
+        super(handler);
+        //world = new World(game, "res/worlds/world1.txt");
+        //handler.setWorld(world);
+        Player1 = new Player(handler, 20, 20, 70, 70);
     }
     
     
     int testCount = 0;
     public void tick(){
         testCount++;
+        Player1.tick();
         if(testCount >477)
             testCount = 0;
     }
     
     public void render(Graphics graph){
-        //test image
-        graph.drawImage(Assets.mouse.get((int)testCount/30), 300, 300, 500, 500, null);//You can resize the mouse by changing the last two numbers
-        //I think 70, 70 is probably a good size
+        Player1.render(graph);
     }
+    
+    
 }

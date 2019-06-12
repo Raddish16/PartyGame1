@@ -14,7 +14,7 @@ import java.awt.image.BufferedImage;
 public class SpriteSheet {
 
     private BufferedImage sheet;
-    private BufferedImage[] mouse;
+    
 
     public SpriteSheet(BufferedImage s) {
         sheet = s;

@@ -12,8 +12,11 @@ import java.awt.Graphics;
  * @author Yasuki Wu
  */
 public abstract class State {
+    
     private static State current = null;
-    protected Game game;
+    
+    
+    
     public static void setState(State state)
     {
         current = state;
@@ -23,12 +26,13 @@ public abstract class State {
     {
         return current;
     }
-
     
-
-    public State(Game game)
+    
+    protected Handler handler;
+    
+    public State(Handler handler)
     {
-        this.game = game;
+        this.handler = handler;
     }
 
     public abstract void tick();
