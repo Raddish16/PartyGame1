@@ -16,7 +16,7 @@ public class GameState extends State{
     private BufferedImage image;
     public GameState(Game game){
         super(game);
-        image =  imageLoader.loadImage("/textures/New Piskel-2.png");
+        image =  imageLoader.loadImage("/textures/mouseSheet.png");
     }
     public void tick(){
         
