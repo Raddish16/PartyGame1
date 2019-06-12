@@ -14,9 +14,19 @@ Comments-
   new things we'd have to learn woukd be menustates, and transitioning between various gamestates, properly resizable screems would be nice too
   after we finish this we could try and make a website to put it on
   
+  Pre-editing-
   Ooh a website, I like it. We could maybe get in with Addison, he would probably have fun with this too.
   I accidentally forgot to read your update so I made an array of the mouse animations. It's commented out.
   I'm getting behind on some of my summer work already, so I'm going to try and catch up today and hopefully have enough time to work on this also.
+  Post-editing-
+  I did a lot of major overhauls, also got the mouse to move with controls. Going to switch it to following the mouse next time
+  You can move the mouse pictures to the menu state if you want, and then work on a character avatars.
+  I added the handler class, you can watch his video on it, it's worth your time.
+  Basically it just stores all of the information so you pass it to the classes instead of game and it gets game from the handler
+  In the menuState we should add a screen to choose characters and game preferences, this can probably wait until we make the game though.
+  Also, I've been putting off my summer homework for the last four hours, and I'm going to my cabin this weekend, so I'm not sure how much I'll be on for the next few days.
+  I'll try to keep up to date and watch more of the videos though.
+
 
 Yasuki's
 
