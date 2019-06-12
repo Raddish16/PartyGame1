@@ -13,31 +13,31 @@ import java.util.ArrayList;
  *
  * @author Yasuki Wu
  */
-public class GameState extends State{
-    
+public class GameState extends State {
+
     private SpriteSheet sheet;
     private ArrayList<BufferedImage> testMouse;
     private Player Player1;
-    
-    public GameState(Handler handler){
+
+    public GameState(Handler handler) {
         super(handler);
         //world = new World(game, "res/worlds/world1.txt");
         //handler.setWorld(world);
         Player1 = new Player(handler, 20, 20, 70, 70);
     }
-    
-    
+
     int testCount = 0;
-    public void tick(){
+
+    public void tick() {
         testCount++;
         Player1.tick();
-        if(testCount >477)
+        if (testCount > 477) {
             testCount = 0;
+        }
     }
-    
-    public void render(Graphics graph){
+
+    public void render(Graphics graph) {
         Player1.render(graph);
     }
-    
-    
+
 }

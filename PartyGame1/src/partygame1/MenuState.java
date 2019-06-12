@@ -11,17 +11,17 @@ import java.awt.Graphics;
  *
  * @author Yasuki Wu
  */
-public class MenuState extends State{
-    
-    
-    
-    public MenuState(Handler handler){
+public class MenuState extends State {
+
+    public MenuState(Handler handler) {
         super(handler);
     }
-    public void tick(){
+
+    public void tick() {
         System.out.println(handler.getMouseManager().getMouseX() + "  " + handler.getMouseManager().getMouseY());
     }
-    public void render(Graphics graph){
-        
+
+    public void render(Graphics graph) {
+
     }
 }

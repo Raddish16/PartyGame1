@@ -10,7 +10,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
-    
+
     private Display display;
     public int width, height;
     public String title;
@@ -18,22 +18,20 @@ public class Game implements Runnable {
     private Thread thread;
     private boolean running = false;
 
-    private BufferStrategy bStrat; 
+    private BufferStrategy bStrat;
     private Graphics graph;
     private BufferedImage image;
 
     private State gameState;
     private State menuState;
-    
+
     private KeyManager keyManager;
     private MouseManager mouseManager;
-    
+
     //private GameCamera gameCamera;
-    
     private Handler handler;
-    
-    public Game(String title, int width, int height)
-    {
+
+    public Game(String title, int width, int height) {
         this.width = width;
         this.height = height;
         this.title = title;
@@ -41,80 +39,67 @@ public class Game implements Runnable {
         mouseManager = new MouseManager();
     }
 
-    private void init()
-    {
+    private void init() {
         display = new Display(title, width, height);
-        
+
         display.getFrame().addKeyListener(keyManager);//Get jframe, add keylistener which allows access to keyboard
-        
+
         display.getFrame().addMouseListener(mouseManager);//Need to add both in canvas and jframe to work properly
         display.getFrame().addMouseMotionListener(mouseManager);
-        
+
         display.getCanvas().addMouseListener(mouseManager);
         display.getCanvas().addMouseMotionListener(mouseManager);
-        
+
         handler = new Handler(this);
-        
+
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
         State.setState(gameState);
         Assets.init();
-        
-        
+
     }
 
-
-    private void tick()
-    {
+    private void tick() {
         keyManager.tick();
-        
-        if (State.getState() != null)
-        {
+
+        if (State.getState() != null) {
             State.getState().tick();
         }
-        
+
     }
 
-    private void render()
-    {
+    private void render() {
         bStrat = display.getCanvas().getBufferStrategy();
-        if( bStrat == null)
-        {
+        if (bStrat == null) {
             display.getCanvas().createBufferStrategy(3);
             return;
         }
         graph = bStrat.getDrawGraphics();
 
-        graph.clearRect(0,0,width,height);
+        graph.clearRect(0, 0, width, height);
 
-  
-                
-        if (State.getState() != null)
-        {
+        if (State.getState() != null) {
             State.getState().render(graph);
-            
-        }
-        
 
+        }
 
         bStrat.show();
         graph.dispose();
 
     }
 
-    public void run()
-    {
+    public void run() {
         init();
 
         int fps = 60;  //Times running tick and render every second
-        double tickTime = 1000000000/ fps; // time in nano seconds to execute tick and render
+        double tickTime = 1000000000 / fps; // time in nano seconds to execute tick and render
         double delta = 0;
         long now;
         long lastTime = System.nanoTime();//current time of computer in nanoseconds
         long timer = 0;
         int ticks = 0;
 
-        while(running){
+        while (running) {
             now = System.nanoTime();
             delta += (now - lastTime) / tickTime;//adds amount of time since line last ran, div by max time allowed
             timer += now - lastTime;//adds amount of time passed since lina above last ran
@@ -125,7 +110,7 @@ public class Game implements Runnable {
                 tick();
                 render();
                 ticks++;
-                delta --;
+                delta--;
             }
             if (timer >= 1000000000) //when timer == 1 billion nanoseconds or 1 second, display ticks per second
             {
@@ -135,17 +120,12 @@ public class Game implements Runnable {
             }
         }
 
-
         stop();
 
     }
 
-    
-
-    public synchronized void start()
-    {
-        if(running)
-        {
+    public synchronized void start() {
+        if (running) {
             return;
         }
         running = true;
@@ -154,10 +134,8 @@ public class Game implements Runnable {
 
     }
 
-    public synchronized void stop()
-    {
-        if(!running)
-        {
+    public synchronized void stop() {
+        if (!running) {
             return;
         }
         running = false;
@@ -168,22 +146,21 @@ public class Game implements Runnable {
         }
 
     }
-    
+
     //getters
-    
-    public int getWidth(){
+    public int getWidth() {
         return width;
     }
-    
-    public int getHeight(){
+
+    public int getHeight() {
         return height;
     }
-    
-    public KeyManager getKeyManager(){
+
+    public KeyManager getKeyManager() {
         return keyManager;
     }
-    
-    public MouseManager getMouseManager(){
+
+    public MouseManager getMouseManager() {
         return mouseManager;
     }
 }

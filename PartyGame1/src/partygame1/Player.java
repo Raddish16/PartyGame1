@@ -13,8 +13,9 @@ import java.awt.Graphics;
  */
 public class Player extends Creature {
 
-    private Game game;private double count = 0;
-    
+    private Game game;
+    private double count = 0;
+
     public Player(Handler handler, float x, float y, int w, int h) {
         super(handler, x, y, w, h);
         this.game = handler.getGame();
@@ -38,8 +39,8 @@ public class Player extends Creature {
     }
 
     public void render(Graphics g) {
-        
-        g.drawImage(Assets.mouse.get((int)count%16), (int) x, (int) y, 70, 70, null);
-        
+
+        g.drawImage(Assets.mouse.get((int) count % 16), (int) x, (int) y, 70, 70, null);
+
     }
 }

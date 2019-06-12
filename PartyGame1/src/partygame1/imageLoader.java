@@ -15,8 +15,7 @@ import java.io.IOException;
 
 public class imageLoader {
 
-    public static BufferedImage loadImage(String path)
-    {
+    public static BufferedImage loadImage(String path) {
         try {
             return ImageIO.read(imageLoader.class.getResource(path));
         } catch (IOException e) {
@@ -25,7 +24,5 @@ public class imageLoader {
         }
         return null;
     }
-    
-    
-}
 
+}

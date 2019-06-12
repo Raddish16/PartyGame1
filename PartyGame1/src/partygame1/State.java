@@ -12,26 +12,20 @@ import java.awt.Graphics;
  * @author Yasuki Wu
  */
 public abstract class State {
-    
+
     private static State current = null;
-    
-    
-    
-    public static void setState(State state)
-    {
+
+    public static void setState(State state) {
         current = state;
     }
 
-    public static State getState()
-    {
+    public static State getState() {
         return current;
     }
-    
-    
+
     protected Handler handler;
-    
-    public State(Handler handler)
-    {
+
+    public State(Handler handler) {
         this.handler = handler;
     }
 

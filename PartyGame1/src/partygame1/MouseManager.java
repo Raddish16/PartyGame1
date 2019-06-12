@@ -13,71 +13,68 @@ import java.awt.event.MouseMotionListener;
  *
  * @author brendanwilhelm
  */
-public class MouseManager implements MouseListener, MouseMotionListener{
+public class MouseManager implements MouseListener, MouseMotionListener {
 
     private boolean leftPressed, rightPressed;
     private int mouseX, mouseY;
-    
-    public MouseManager(){
-        
+
+    public MouseManager() {
+
     }
 
 //Getters
-      
-    public boolean isLeftPressed(){
+    public boolean isLeftPressed() {
         return leftPressed;
     }
-    
-    public boolean isRightPressed(){
+
+    public boolean isRightPressed() {
         return rightPressed;
     }
-    
-    public int getMouseX(){
+
+    public int getMouseX() {
         return mouseX;
     }
-    
-    public int getMouseY(){
+
+    public int getMouseY() {
         return mouseY;
     }
-    
-    
+
     //Setters
-    
     @Override
     public void mouseClicked(MouseEvent e) {
     }
 
     @Override
     public void mousePressed(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
+        if (e.getButton() == MouseEvent.BUTTON1) {
             leftPressed = true;
-        }else if(e.getButton() == MouseEvent.BUTTON3){
+        } else if (e.getButton() == MouseEvent.BUTTON3) {
             rightPressed = true;
         }
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-        if(e.getButton() == MouseEvent.BUTTON1){
+        if (e.getButton() == MouseEvent.BUTTON1) {
             leftPressed = false;
-        }else if(e.getButton() == MouseEvent.BUTTON3){
+        } else if (e.getButton() == MouseEvent.BUTTON3) {
             rightPressed = false;
         }
     }
 
     @Override
     public void mouseEntered(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseExited(MouseEvent e) {
-        
+
     }
 
     @Override
     public void mouseDragged(MouseEvent e) {
-    
+
     }
 
     @Override
@@ -85,5 +82,5 @@ public class MouseManager implements MouseListener, MouseMotionListener{
         mouseX = e.getX();
         mouseY = e.getY();
     }
-    
+
 }
