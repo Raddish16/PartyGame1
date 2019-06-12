@@ -26,7 +26,7 @@ public abstract class UIObject {
         this.width = width;
         this.height = height;
         hover = false;
-        bounds = new Rectangle((int)x,(int)y,width,height);
+        bounds = new Rectangle((int) x, (int) y, width, height);
     }
 
     public abstract void tick();
@@ -36,7 +36,7 @@ public abstract class UIObject {
     public abstract void onClick();
 
     public void onMouseMove(MouseEvent e) {
-        
+
     }
 
     public void onMouseRelease(MouseEvent e) {
