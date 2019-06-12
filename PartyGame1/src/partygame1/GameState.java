@@ -32,7 +32,7 @@ public class GameState extends State{
     
     public void render(Graphics graph){
         //test image
-        graph.drawImage(Assets.mouse.get((int)testCount/30), 300, 300, null);
+        graph.drawImage(Assets.mouse.get((int)testCount/30), 300, 300, 400, 400, null);//You can resize the mouse by changing the last two numbers
         
     }
 }
