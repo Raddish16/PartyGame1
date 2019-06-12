@@ -16,11 +16,14 @@ public class Player extends Creature {
     private Game game;
     private double count = 0;
     private double first = 0;
+    private boolean isMad;
+    private int c2;
 
     public Player(Handler handler, float x, float y, int w, int h) {
         super(handler, x, y, w, h);
         this.game = handler.getGame();
-
+        isMad = false;
+        c2 = 0;
     }
 
     public void tick() {
@@ -43,15 +46,24 @@ public class Player extends Creature {
                 x += 3;
             }
         }
+
+        if (isMad) {
+
+        } else {
+            c2 = (int) count % 8;
+        }
     }
 
     public void render(Graphics g) {
+
         if (handler.getMouseManager().isLeftPressed()) {
             //I want it to do the initial click as him getting bopped on the head, I can't figure it out
-            
-            g.drawImage(Assets.madmouse.get((int) count % 8), (int) x, (int) y, 70, 70, null);
-            
+            //fixed, it shold work now
+            isMad = true;
+            g.drawImage(Assets.madmouse.get((int) count % 8 - c2), (int) x, (int) y, 70, 70, null);
+
         } else {
+            isMad = false;
             g.drawImage(Assets.normouse.get((int) count % 8), (int) x, (int) y, 70, 70, null);
         }
     }
