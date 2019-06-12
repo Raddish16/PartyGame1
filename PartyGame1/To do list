@@ -4,7 +4,16 @@ Create import file for images(yasuki-finished today, if you run the program the 
 Why is one mouse saying "ass"
   - He says it after the click animation(where his head gets smashed), thought it would be funny. If you want you can remove it
   - no no I love it, keep it
-Minigame classes which extends gamestate? Gamestate to manage the overall party game, and minigame classes can be loaded by it. 
+  - Haha, awesome. I want to add a sound animation that says asshole in a squeaky voice, seems fun. Good games always have character
+
+Minigame classes which extends gamestate? Gamestate to manage the overall party game, and minigame classes can be loaded by it.
+
+Added handler class, look over that to understand it.
+Come up with character avatars
+
 Decide which games to create
 Work out game mechanics
-And much more we haven't run into yet
+
+We should use more notes, and organize things better. Also, use the formatting key to make consistent coding.
+
+And much more we haven't run into yet...f
