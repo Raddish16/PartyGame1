@@ -1,6 +1,7 @@
 To do list
 
 Create import file for images(yasuki-finished today, if you run the program the spritesheet is rendered on the screen as a test)
+Minigame class which extends gamestate?
 Decide which games to create
 Work out game mechanics
 Menustate transitioning with various gamestates 
