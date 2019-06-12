@@ -10,7 +10,7 @@ import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
 
 public class Game implements Runnable {
-    //
+    
     private Display display;
     public int width, height;
     public String title;
