@@ -1,8 +1,9 @@
 To do list
 
-get UI working
-I am in the process of making frogger playable inside partygame, feel free to finish it if you can get the UI working as 
-shoot frogger will take longer than expected due to my inneficient sprites from then
+try to get UI working
+yasuki - I am in the process of making frogger playable inside partygame, feel free to finish it if you can get the UI working as 
+shoot frogger will take longer than expected due to my inneficient sprites from then, as well as the handler, and the new parameters required in the constructor
+may not be worth it. 
 
 Create import file for images(yasuki-finished today, if you run the program the animated mouse is rendered on the screen as a test)
 Why is one mouse saying "ass"
