@@ -13,30 +13,33 @@ import java.util.ArrayList;
  * @author Yasuki Wu
  */
 public class Assets {
+
     private static final int width = 32, height = 32;
-    private static SpriteSheet sheet;
+    private static SpriteSheet sheet, startSheet;
     public static ArrayList<BufferedImage> mouse, madmouse, normouse;//easier to iterate through
     public static BufferedImage[][] mouse2;//easier to reference
-    public static BufferedImage[]startBtn;
-    
+    public static BufferedImage[] startBtn;
+
     public static void init() {
         sheet = new SpriteSheet(imageLoader.loadImage("/textures/mouseSheet.png"));
+        startSheet = new SpriteSheet(imageLoader.loadImage("/textures/startSheet.png"));
         mouse = new ArrayList<BufferedImage>();
         madmouse = new ArrayList<BufferedImage>();
         normouse = new ArrayList<BufferedImage>();
-
+        startBtn = new BufferedImage[2];
+        startBtn[0] = startSheet.crop(0, 0, 32, 32);
+        startBtn[1] = startSheet.crop(0, 32, 32, 32);
         for (int y = 0; y < 104; y += 26) {
             for (int x = 0; x < 104; x += 26) {
                 mouse.add(sheet.crop(x, y, 26, 26));
             }
         }
-        for(int y = 0; y < 8; y++){
+        for (int y = 0; y < 8; y++) {
             normouse.add(mouse.get(y));
         }
-        for(int y = 8; y < 16; y++){
+        for (int y = 8; y < 16; y++) {
             madmouse.add(mouse.get(y));
         }
-        
 
         //I accidentally repeated the same thing you did
         /*BufferedImage[] mouse1 = new BufferedImage[16];

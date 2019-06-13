@@ -36,11 +36,15 @@ public abstract class UIObject {
     public abstract void onClick();
 
     public void onMouseMove(MouseEvent e) {
-
+        if(bounds.contains(e.getX(),e.getY()))
+            hover = true;
+        else
+            hover = false;
     }
 
     public void onMouseRelease(MouseEvent e) {
-
+        if(hover)
+            onClick();
     }
 
     public float getX() {
