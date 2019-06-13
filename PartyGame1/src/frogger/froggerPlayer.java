@@ -26,10 +26,11 @@ public  class froggerPlayer extends Creature{
     private String thisKey;
     private boolean onLeft, onRight;
     private int logSpeed,score;
+    private Handler handler;
     
     public froggerPlayer(Handler h, float x, float y, int width, int height) {
         super(h,x, y,width,height);
-        this.game = game;
+        handler = h;
         playerImage = imageLoader.loadImage("/textures/New Piskel-1.png.png");
         tickCountMove = 40;
         inMove = false;
@@ -39,7 +40,6 @@ public  class froggerPlayer extends Creature{
         
     }
     
-    @Override
     public void tick() {
         tickCountMove++;
         
@@ -121,7 +121,6 @@ public  class froggerPlayer extends Creature{
 
     }
 
-    @Override
     public void render(Graphics graph) {
         graph.drawImage(playerImage,(int)x,(int)y,null);
 
