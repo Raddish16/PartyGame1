@@ -15,14 +15,15 @@ import java.util.ArrayList;
 public class Assets {
 
     private static final int width = 32, height = 32;
-    private static SpriteSheet sheet, startSheet;
-    public static ArrayList<BufferedImage> mouse, madmouse, normouse;//easier to iterate through
+    private static SpriteSheet sheet, startSheet,bomberSheet;
+    public static ArrayList<BufferedImage> mouse, madmouse, normouse,bomber;//easier to iterate through
     public static BufferedImage[][] mouse2;//easier to reference
     public static BufferedImage[] startBtn;
 
     public static void init() {
         sheet = new SpriteSheet(imageLoader.loadImage("/textures/mouseSheet.png"));
         startSheet = new SpriteSheet(imageLoader.loadImage("/textures/startSheet.png"));
+        bomberSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberSheet.png"));
         mouse = new ArrayList<BufferedImage>();
         madmouse = new ArrayList<BufferedImage>();
         normouse = new ArrayList<BufferedImage>();
@@ -53,6 +54,10 @@ public class Assets {
             for (int r = 0; r < mouse2.length; r++) {
                 mouse2[r][c] = sheet.crop(r * 26, c * 26, 26, 26);
             }
+        }
+        bomber = new ArrayList<>();
+        for(int n = 0;n<352;n+=32){
+            bomber.add(bomberSheet.crop(0,n,32,32));
         }
     }
 
