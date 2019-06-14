@@ -3,11 +3,9 @@ To do list
 I’m going to try and make some graphics for the menu, I’m thinking the title will be 32-bit conspiracy but it can change
 -can you put the graphics you have in the textures folder when you're done?
 
-I figured out how to fix the UI, im tired so I will do it tommorow. 
+UI fixed
 
-state is currently set to gamestate. I am using another state which gamestate is ticking and rendering. If you want to work on menustate
-you can change the current state in the game class, or if you want to work on another game you can set a boolean
-in gamestate to false to stop the game I started from ticking and rendering
+
 
 yasuki - I am in the process of making frogger playable inside partygame, feel free to finish it if you can get the UI working as 
 shoot frogger will take longer than expected due to my inneficient sprites from then, as well as the handler, and the new parameters required in the constructor
