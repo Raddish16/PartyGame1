@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class Assets {
 
     private static final int width = 32, height = 32;
-    public static SpriteSheet sheet, startSheet,bomberSheet;
-    public static ArrayList<BufferedImage> mouse, madmouse, normouse,bomber;//easier to iterate through
+    public static SpriteSheet sheet, startSheet, bomberSheet, planeSheet;
+    public static ArrayList<BufferedImage> mouse, madmouse, normouse, bomber, plane;//easier to iterate through
     public static BufferedImage[][] mouse2;//easier to reference
     public static BufferedImage[] startBtn;
 
@@ -24,6 +24,7 @@ public class Assets {
         sheet = new SpriteSheet(imageLoader.loadImage("/textures/mouseSheet.png"));
         startSheet = new SpriteSheet(imageLoader.loadImage("/textures/startSheet.png"));
         bomberSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberSheet.png"));
+        planeSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniPlaneSheet.png"));
         mouse = new ArrayList<BufferedImage>();
         madmouse = new ArrayList<BufferedImage>();
         normouse = new ArrayList<BufferedImage>();
@@ -56,10 +57,15 @@ public class Assets {
             }
         }
         bomber = new ArrayList<>();
-        for(int n = 0;n<352;n+=32){
-            bomber.add(bomberSheet.crop(0,n,32,32));
+        for (int n = 0; n < 352; n += 32) {
+            bomber.add(bomberSheet.crop(0, n, 32, 32));
         }
-       
-        } 
-}
+        plane = new ArrayList<>();
+        for(int y = 0; y<64;y+=32){
+            for(int x = 0; x<64; x+=32){
+                plane.add(planeSheet.crop(x, y, 32, 32));
+            }
+        }
 
+    }
+}
