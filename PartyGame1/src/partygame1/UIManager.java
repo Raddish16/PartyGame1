@@ -5,55 +5,69 @@
  */
 package partygame1;
 
-import java.awt.Graphics;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+
 
 /**
  *
  * @author Yasuki Wu
  */
+import java.awt.Graphics;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+
 public class UIManager {
 
-    private Handler handler;
+	private Handler handler;
+	private ArrayList<UIObject> objects;
+	
+	public UIManager(Handler handler){
+		this.handler = handler;
+		objects = new ArrayList<UIObject>();
+	}
+	
+	public void tick(){
+		for(UIObject o : objects)
+			o.tick();
+	}
+	
+	public void render(Graphics g){
+		for(UIObject o : objects)
+			o.render(g);
+	}
+	
+	public void onMouseMove(MouseEvent e){
+		for(UIObject o : objects)
+			o.onMouseMove(e);
+	}
+	
+	public void onMouseRelease(MouseEvent e){
+		for(UIObject o : objects)
+			o.onMouseRelease(e);
+	}
+	
+	public void addObject(UIObject o){
+		objects.add(o);
+	}
+	
+	public void removeObject(UIObject o){
+		objects.remove(o);
+	}
 
-    private ArrayList<UIObject> objects;
+	public Handler getHandler() {
+		return handler;
+	}
 
-    public UIManager(Handler handler) {
-        this.handler = handler;
-        Assets.init();//should solve the UI problem when I put it back together
-        objects = new ArrayList<UIObject>();
-    }
+	public void setHandler(Handler handler) {
+		this.handler = handler;
+	}
 
-    public void tick() {
-        for (UIObject o : objects) {
-            o.tick();
-        };
-    }
+	public ArrayList<UIObject> getObjects() {
+		return objects;
+	}
 
-    public void render(Graphics g) {
-        for (UIObject o : objects) {
-            o.render(g);
-        };
-    }
-
-    public void onMouseMve(MouseEvent e) {
-        for (UIObject o : objects) {
-            o.onMouseMove(e);
-        };
-    }
-
-    public void onMouseRelease(MouseEvent e) {
-        for (UIObject o : objects) {
-            o.onMouseRelease(e);
-        };
-    }
-
-    public void addObject(UIObject o) {
-        objects.add(o);
-    }
-
-    public void removedObject(UIObject o) {
-        objects.remove(o);
-    }
+	public void setObjects(ArrayList<UIObject> objects) {
+		this.objects = objects;
+	}
+	
 }
