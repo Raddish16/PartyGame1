@@ -18,17 +18,26 @@ public class GameState extends State {
     private SpriteSheet sheet;
     private ArrayList<BufferedImage> testMouse;
     private Player Player1;
+    private boolean planeGame;
+    private State planeGameState;
+    private Handler handler;
 
     public GameState(Handler handler) {
         super(handler);
         //world = new World(game, "res/worlds/world1.txt");
         //handler.setWorld(world);
         Player1 = new Player(handler, 20, 20, 70, 70);
+        this.handler = handler;
+        planeGameState = new PlaneGameState(this.handler);
+        planeGame = true;
     }
 
     int testCount = 0;
 
     public void tick() {
+        if(planeGame){
+            planeGameState.tick();
+        }
         testCount++;
         Player1.tick();
         if (testCount > 477) {
@@ -37,6 +46,9 @@ public class GameState extends State {
     }
 
     public void render(Graphics graph) {
+        if(planeGame){
+            planeGameState.render(graph);
+        }
         Player1.render(graph);
     }
 
