@@ -1,5 +1,7 @@
 To do list
 
+I’m going to try and make some graphics for the menu, I’m thinking the title will be 32-bit conspiracy but it can change
+
 I figured out how to fix the UI, im tired so I will do it tommorow. 
 
 state is currently set to gamestate. I am using another state which gamestate is ticking and rendering. If you want to work on menustate
