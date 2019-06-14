@@ -21,6 +21,7 @@ public class UIManager {
 
     public UIManager(Handler handler) {
         this.handler = handler;
+        Assets.init();//should solve the UI problem when I put it back together
         objects = new ArrayList<UIObject>();
     }
 

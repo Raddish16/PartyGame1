@@ -15,7 +15,7 @@ import java.util.ArrayList;
 public class Assets {
 
     private static final int width = 32, height = 32;
-    private static SpriteSheet sheet, startSheet,bomberSheet;
+    public static SpriteSheet sheet, startSheet,bomberSheet;
     public static ArrayList<BufferedImage> mouse, madmouse, normouse,bomber;//easier to iterate through
     public static BufferedImage[][] mouse2;//easier to reference
     public static BufferedImage[] startBtn;
@@ -59,6 +59,7 @@ public class Assets {
         for(int n = 0;n<352;n+=32){
             bomber.add(bomberSheet.crop(0,n,32,32));
         }
-    }
-
+       
+        } 
 }
+

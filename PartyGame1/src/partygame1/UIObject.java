@@ -25,6 +25,7 @@ public abstract class UIObject {
         this.y = y;
         this.width = width;
         this.height = height;
+        Assets.init();//should solve thye UI problem when I put it back together
         hover = false;
         bounds = new Rectangle((int) x, (int) y, width, height);
     }

@@ -6,6 +6,7 @@
 package partygame1;
 
 import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -16,8 +17,7 @@ import java.util.ArrayList;
 public class Bomber extends Creature{
     private Handler handler;
     private int health;
-    private ArrayList<BufferedImage>bomberSheet;
-    
+    private BufferedImage cS;
     
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -26,8 +26,12 @@ public class Bomber extends Creature{
         this.handler = handler;
         xMove = 0;
         yMove = -1* speed;
-       
+        Assets.init();
+        cS = Assets.bomber.get(0);
     }
+    
+    
+    
     
     public void getInput(){
         if(handler.getKeyManager().left){
@@ -35,7 +39,7 @@ public class Bomber extends Creature{
                 //2nd quadrant
                 if(xMove<=0){
                     xMove-=0.05;
-                    yMove+=0.05;    
+                    yMove+=0.05;
                 }
                 //1st quadrant
                 if(xMove>=0){

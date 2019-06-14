@@ -19,6 +19,7 @@ public class UIImageButton extends UIObject{
         super(x,y,width,height);
         this.images = images;
         this.clicker = clicker;
+        Assets.init();//should solve the UI problem when I put it back.
     }
     @Override
     public void tick() {
