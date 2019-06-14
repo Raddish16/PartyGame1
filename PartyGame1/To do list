@@ -2,7 +2,7 @@ To do list
 
 state is currently set to gamestate. I am using another state which gamestate is ticking and rendering. If you want to work on menustate
 you can change the current state in the game class, or if you want to work on another game you can set a boolean
-in gamestate to false to stop it from ticking and rendering
+in gamestate to false to stop my game from ticking and rendering
 
 try to get UI working
 yasuki - I am in the process of making frogger playable inside partygame, feel free to finish it if you can get the UI working as 
