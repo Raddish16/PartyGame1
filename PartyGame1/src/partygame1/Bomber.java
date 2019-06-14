@@ -5,8 +5,10 @@
  */
 package partygame1;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -98,7 +100,7 @@ public class Bomber extends Creature{
         move();
     }
     public void render(Graphics g){
-        g.drawImage(Assets.bomber.get(0),(int)x,(int)y, 64, 64,null);
+        g.drawImage(cS,(int)x,(int)y, 64, 64,null);
     }
     
 }
