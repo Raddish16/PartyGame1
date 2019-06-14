@@ -1,19 +1,17 @@
 To do list
 
-try to get UI working
+I figured out how to fix the UI, im tired so I will do it tommorow. 
+
+state is currently set to gamestate. I am using another state which gamestate is ticking and rendering. If you want to work on menustate
+you can change the current state in the game class, or if you want to work on another game you can set a boolean
+in gamestate to false to stop my game from ticking and rendering
+
 yasuki - I am in the process of making frogger playable inside partygame, feel free to finish it if you can get the UI working as 
 shoot frogger will take longer than expected due to my inneficient sprites from then, as well as the handler, and the new parameters required in the constructor
 may not be worth it. 
 
-Create import file for images(yasuki-finished today, if you run the program the animated mouse is rendered on the screen as a test)
-Why is one mouse saying "ass"
-  - He says it after the click animation(where his head gets smashed), thought it would be funny. If you want you can remove it
-  - no no I love it, keep it
-  - Haha, awesome. I want to add a sound animation that says asshole in a squeaky voice, seems fun. Good games always have character
-
 Minigame classes which extends gamestate? Gamestate to manage the overall party game, and minigame classes can be loaded by it.
 
-Added handler class, look over that to understand it.
 Come up with character avatars
 
 Decide which games to create
