@@ -18,111 +18,127 @@ import javax.swing.ImageIcon;
  *
  * @author Yasuki Wu
  */
-public class Bomber extends Creature{
+public class Bomber extends Creature {
+
     private Handler handler;
-    private int health,rotated;
-    private BufferedImage cS,newCs;
-    
-    
+    private int health, rotated;
+    private BufferedImage cS, newCs;
+
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
-        speed =  4.5f;
+        speed = 4.5f;
         health = super.getHealth();
         this.handler = handler;
         xMove = 0;
-        yMove = -1* speed;
+        yMove = -1 * speed;
         rotated = 0;
         Assets.init();
         cS = Assets.bomber.get(0);
     }
-    
-    
-    public void rotateImage(double degrees){
-        BufferedImage newI = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-        Graphics2D  g2= (Graphics2D)newI.getGraphics();
-        g2.rotate(Math.toRadians(degrees),width/2,height/2);
-        g2.drawImage(cS,0,0,null);
+
+    public void rotateImage(double degrees) {
+        BufferedImage newI = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = (Graphics2D) newI.getGraphics();
+        g2.rotate(Math.toRadians(degrees), width / 2, height / 2);
+        g2.drawImage(cS, 0, 0, null);
         cS = newI;
         g2.dispose();
     }
-    public BufferedImage newRotateImage(double degrees){
-        BufferedImage newI = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
-        Graphics2D  g2= (Graphics2D)newI.getGraphics();
-        g2.rotate(Math.toRadians(degrees),width/2,height/2);
-        g2.drawImage(cS,0,0,null);
+
+    public BufferedImage newRotateImage(double degrees) {
+        BufferedImage newI = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = (Graphics2D) newI.getGraphics();
+        g2.rotate(Math.toRadians(degrees), width / 2, height / 2);
+        g2.drawImage(cS, 0, 0, null);
         newCs = newI;
         return newCs;
     }
-    
-    public void getInput(){
-        if(handler.getKeyManager().left){
-            rotated-=1;
+
+    public void getInput() {
+        if (handler.getKeyManager().left) {
+            rotated -= 1;
             newCs = newRotateImage(rotated);
-            if(yMove<=0){
+            if (yMove <= 0) {
                 //2nd quadrant
-                if(xMove<=0){
-                    xMove-=0.05;
-                    yMove+=0.05;
+                if (xMove <= 0) {
+                    xMove -= 0.05;
+                    yMove += 0.05;
                 }
                 //1st quadrant
-                if(xMove>=0){
-                    xMove-=0.05;
-                    yMove-=0.05;
+                if (xMove >= 0) {
+                    xMove -= 0.05;
+                    yMove -= 0.05;
                 }
             }
-            if(yMove>=0){
+            if (yMove >= 0) {
                 // 3rd quadrant
-                if(xMove<=0){
-                    xMove+=0.05;
-                    yMove+=0.05;    
+                if (xMove <= 0) {
+                    xMove += 0.05;
+                    yMove += 0.05;
                 }
                 // 4th quadrant
-                if(xMove>=0){
-                    xMove+=0.05;
-                    yMove-=0.05;
+                if (xMove >= 0) {
+                    xMove += 0.05;
+                    yMove -= 0.05;
                 }
             }
         }
-        if(handler.getKeyManager().right){
-            rotateImage(90);
-            if(yMove<=0){
+        if (handler.getKeyManager().right) {
+            rotated += 1;
+            newCs = newRotateImage(rotated);
+            if (yMove <= 0) {
                 //2nd quadrant
-                if(xMove<=0){
-                    xMove+=0.05;
-                    yMove-=0.05;
+                if (xMove <= 0) {
+                    xMove += 0.05;
+                    yMove -= 0.05;
                 }
                 //1st quadrant
-                if(xMove>=0*speed){
-                    xMove+=0.05;
-                    yMove+=0.05;
+                if (xMove >= 0 * speed) {
+                    xMove += 0.05;
+                    yMove += 0.05;
                 }
             }
-            if(yMove>=0){
+            if (yMove >= 0) {
                 // 3rd quadrant
-                if(xMove<=0){
-                    xMove-=0.05;
-                    yMove-=0.05;    
+                if (xMove <= 0) {
+                    xMove -= 0.05;
+                    yMove -= 0.05;
                 }
                 // 4th quadrant
-                if(xMove>=0){
-                    xMove-=0.05;
-                    yMove+=0.05;
+                if (xMove >= 0) {
+                    xMove -= 0.05;
+                    yMove += 0.05;
                 }
             }
-            
+
         }
     }
-    
-    public void move(){
+
+    public void move() {
         super.move();
     }
-    
-    public void tick(){
+
+    public void tick() {
         getInput();
         move();
+        if (xMove == 0 && yMove == (-1) * speed) {
+            newCs = cS;
+            rotated = 0;
+        }
+        if (xMove == 0 && yMove == speed) {
+            newCs = newRotateImage(180);
+            rotated = 180;
+        }
+        if (xMove == 0 && yMove == (-1) * speed) {
+            newCs = cS;
+        }
+        if (xMove == 0 && yMove == (-1) * speed) {
+            newCs = cS;
+        }
     }
-    public void render(Graphics g){
-        g.drawImage(newCs,(int)x,(int)y, 64, 64,null);
+
+    public void render(Graphics g) {
+        g.drawImage(newCs, (int) x, (int) y, 64, 64, null);
     }
-    
+
 }
