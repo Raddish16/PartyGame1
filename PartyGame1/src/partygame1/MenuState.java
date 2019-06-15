@@ -15,6 +15,7 @@ public class MenuState extends State {
 
     Player Player1;
     private UIManager uiManager;
+    private int aniLoop;
     
     public MenuState(Handler handler) {
         super(handler);
