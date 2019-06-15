@@ -20,34 +20,44 @@ import javax.swing.ImageIcon;
  */
 public class Bomber extends Creature{
     private Handler handler;
-    private int health;
-    private BufferedImage cS;
+    private int health,rotated;
+    private BufferedImage cS,newCs;
+    
     
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
-        speed = (int) super.getSpeed()/2;
+        speed =  4.5f;
         health = super.getHealth();
         this.handler = handler;
         xMove = 0;
         yMove = -1* speed;
+        rotated = 0;
         Assets.init();
         cS = Assets.bomber.get(0);
     }
     
     
-    public void rotateImage(double degrees, ImageObserver o){
-        ImageIcon icon = new ImageIcon(cS);
-        
+    public void rotateImage(double degrees){
         BufferedImage newI = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
         Graphics2D  g2= (Graphics2D)newI.getGraphics();
         g2.rotate(Math.toRadians(degrees),width/2,height/2);
-        g2.drawImage(cS,0,0,o);
+        g2.drawImage(cS,0,0,null);
         cS = newI;
+        g2.dispose();
+    }
+    public BufferedImage newRotateImage(double degrees){
+        BufferedImage newI = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+        Graphics2D  g2= (Graphics2D)newI.getGraphics();
+        g2.rotate(Math.toRadians(degrees),width/2,height/2);
+        g2.drawImage(cS,0,0,null);
+        newCs = newI;
+        return newCs;
     }
     
     public void getInput(){
         if(handler.getKeyManager().left){
-            rotateImage(90,null);
+            rotated-=1;
+            newCs = newRotateImage(rotated);
             if(yMove<=0){
                 //2nd quadrant
                 if(xMove<=0){
@@ -74,7 +84,7 @@ public class Bomber extends Creature{
             }
         }
         if(handler.getKeyManager().right){
-            rotateImage(90,null);
+            rotateImage(90);
             if(yMove<=0){
                 //2nd quadrant
                 if(xMove<=0){
@@ -112,7 +122,7 @@ public class Bomber extends Creature{
         move();
     }
     public void render(Graphics g){
-        g.drawImage(cS,(int)x,(int)y, 64, 64,null);
+        g.drawImage(newCs,(int)x,(int)y, 64, 64,null);
     }
     
 }
