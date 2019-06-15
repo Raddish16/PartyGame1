@@ -8,6 +8,7 @@ package partygame1;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 
 /**
@@ -19,6 +20,7 @@ public class Bomber extends Creature {
     private Handler handler;
     private int health, rotated;
     private BufferedImage cS, newCs;
+    private ArrayList<Bullet>turretBullets;
 
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -30,6 +32,7 @@ public class Bomber extends Creature {
         rotated = 0;
         Assets.init();
         cS = Assets.bomber.get(0);
+        turretBullets = new ArrayList<>();
     }
 
     public void rotateImage(double degrees) {
@@ -64,6 +67,9 @@ public class Bomber extends Creature {
         }
         if (handler.getKeyManager().down) {
             yMove = speed/2;
+        }
+        if (handler.getKeyManager().space) {
+            turretBullets.add(new Bullet(handler, x,y,width,height));
         }
         /*if (handler.getKeyManager().left) {
             rotated -= 1;
@@ -146,10 +152,16 @@ public class Bomber extends Creature {
         if (xMove == 0 && yMove == (-1) * speed) {
             newCs = cS;
         }
+        for(Bullet b:turretBullets){
+            b.tick();
+        }
     }
 
     public void render(Graphics g) {
         g.drawImage(cS, (int) x, (int) y, 64, 64, null);
+        for(Bullet b:turretBullets){
+            b.render(g);
+        }
     }
 
 }
