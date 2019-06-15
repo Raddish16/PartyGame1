@@ -20,7 +20,7 @@ public class Player extends Creature {
     public Player(Handler handler, float x, float y, int w, int h) {
         super(handler, x, y, w, h);
         this.game = handler.getGame();
-
+        
     }
 
     public void tick() {
