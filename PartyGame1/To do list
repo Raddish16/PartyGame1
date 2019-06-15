@@ -1,14 +1,18 @@
 To do list
 
-Create import file for images(yasuki-finished today, if you run the program the animated mouse is rendered on the screen as a test)
-Why is one mouse saying "ass"
-  - He says it after the click animation(where his head gets smashed), thought it would be funny. If you want you can remove it
-  - no no I love it, keep it
-  - Haha, awesome. I want to add a sound animation that says asshole in a squeaky voice, seems fun. Good games always have character
+I’m going to try and make some graphics for the menu, I’m thinking the title will be 32-bit conspiracy but it can change
+-can you put the graphics you have in the textures folder when you're done?
+
+UI fixed
+
+
+
+yasuki - I am in the process of making frogger playable inside partygame, feel free to finish it if you can get the UI working as 
+shoot frogger will take longer than expected due to my inneficient sprites from then, as well as the handler, and the new parameters required in the constructor
+may not be worth it. 
 
 Minigame classes which extends gamestate? Gamestate to manage the overall party game, and minigame classes can be loaded by it.
 
-Added handler class, look over that to understand it.
 Come up with character avatars
 
 Decide which games to create
@@ -17,3 +21,4 @@ Work out game mechanics
 We should use more notes, and organize things better. Also, use the formatting key to make consistent coding.
 
 And much more we haven't run into yet...f
+

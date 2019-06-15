@@ -17,17 +17,36 @@ public class Creature extends Entity {
     public static final int defaultHeight = 32;
     protected int health;
     protected float speed;
+    protected float xMove,yMove;
 
     public Creature(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         health = defaultHealth;
         speed = defaultSpeed;
+        xMove = 0;
+        yMove = 0;
     }
 
-    /*public void move(){
+    public float getxMove() {
+        return xMove;
+    }
+
+    public void setxMove(float xMove) {
+        this.xMove = xMove;
+    }
+
+    public float getyMove() {
+        return yMove;
+    }
+
+    public void setyMove(float yMove) {
+        this.yMove = yMove;
+    }
+
+    public void move(){
         x += xMove;
         y += yMove;
-    }*/
+    }
     public int getHealth() {
         return health;
     }

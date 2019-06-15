@@ -22,7 +22,7 @@ public class Game implements Runnable {
     private Graphics graph;
     private BufferedImage image;
 
-    private State gameState;
+    public State gameState;
     private State menuState;
 
     private KeyManager keyManager;
@@ -40,6 +40,7 @@ public class Game implements Runnable {
     }
 
     private void init() {
+        Assets.init();
         display = new Display(title, width, height);
 
         display.getFrame().addKeyListener(keyManager);//Get jframe, add keylistener which allows access to keyboard
@@ -56,7 +57,7 @@ public class Game implements Runnable {
         menuState = new MenuState(handler);
         State.setState(menuState);
         
-        Assets.init();
+       
 
     }
 
@@ -166,5 +167,11 @@ public class Game implements Runnable {
     }
     public State getState(){
         return State.getState();
+    }
+    public Display getDisplay(){
+        return display;
+    }
+    public Graphics getGraphics(){
+        return graph;
     }
 }
