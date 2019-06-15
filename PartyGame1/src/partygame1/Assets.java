@@ -19,6 +19,7 @@ public class Assets {
     public static ArrayList<BufferedImage> mouse, madmouse, normouse, bomber, plane, bRobot;//easier to iterate through
     public static BufferedImage[][] mouse2;//easier to reference
     public static BufferedImage[] startBtn;
+    public static BufferedImage MenuTitle;
 
     public static void init() {
         sheet = new SpriteSheet(imageLoader.loadImage("/textures/mouseSheet.png"));
@@ -26,6 +27,8 @@ public class Assets {
         bomberSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberSheet.png"));
         planeSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniPlaneSheet.png"));
         bRobotSheet = new SpriteSheet(imageLoader.loadImage("/textures/robotSheet.png"));
+        
+        MenuTitle = imageLoader.loadImage("/textures/Menu Title.png");
         
         mouse = new ArrayList<BufferedImage>();
         madmouse = new ArrayList<BufferedImage>();
