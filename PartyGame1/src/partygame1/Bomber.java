@@ -10,7 +10,9 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
+import java.awt.image.ImageObserver;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,7 +25,7 @@ public class Bomber extends Creature{
     
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
-        speed = (int) super.getSpeed()-1.5f;
+        speed = (int) super.getSpeed()/2;
         health = super.getHealth();
         this.handler = handler;
         xMove = 0;
@@ -33,10 +35,19 @@ public class Bomber extends Creature{
     }
     
     
-    
+    public void rotateImage(double degrees, ImageObserver o){
+        ImageIcon icon = new ImageIcon(cS);
+        
+        BufferedImage newI = new BufferedImage(width,height,BufferedImage.TYPE_INT_ARGB);
+        Graphics2D  g2= (Graphics2D)newI.getGraphics();
+        g2.rotate(Math.toRadians(degrees),width/2,height/2);
+        g2.drawImage(cS,0,0,o);
+        cS = newI;
+    }
     
     public void getInput(){
         if(handler.getKeyManager().left){
+            rotateImage(90,null);
             if(yMove<=0){
                 //2nd quadrant
                 if(xMove<=0){
@@ -63,6 +74,7 @@ public class Bomber extends Creature{
             }
         }
         if(handler.getKeyManager().right){
+            rotateImage(90,null);
             if(yMove<=0){
                 //2nd quadrant
                 if(xMove<=0){

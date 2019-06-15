@@ -168,4 +168,10 @@ public class Game implements Runnable {
     public State getState(){
         return State.getState();
     }
+    public Display getDisplay(){
+        return display;
+    }
+    public Graphics getGraphics(){
+        return graph;
+    }
 }
