@@ -5,14 +5,10 @@
  */
 package partygame1;
 
-import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageObserver;
-import java.util.ArrayList;
-import javax.swing.ImageIcon;
+
 
 /**
  *
@@ -30,7 +26,7 @@ public class Bomber extends Creature {
         health = super.getHealth();
         this.handler = handler;
         xMove = 0;
-        yMove = -1 * speed;
+        yMove = 0;
         rotated = 0;
         Assets.init();
         cS = Assets.bomber.get(0);
@@ -55,7 +51,21 @@ public class Bomber extends Creature {
     }
 
     public void getInput() {
+        yMove = 0;
+        xMove = 0;
+        if (handler.getKeyManager().up) {
+            yMove = (-1) * speed;
+        }
         if (handler.getKeyManager().left) {
+            xMove = (-1)*speed;
+        }
+        if (handler.getKeyManager().right) {
+            xMove = speed;
+        }
+        if (handler.getKeyManager().down) {
+            yMove = speed/2;
+        }
+        /*if (handler.getKeyManager().left) {
             rotated -= 1;
             newCs = newRotateImage(rotated);
             if (yMove <= 0) {
@@ -112,6 +122,7 @@ public class Bomber extends Creature {
             }
 
         }
+         */
     }
 
     public void move() {
@@ -138,7 +149,7 @@ public class Bomber extends Creature {
     }
 
     public void render(Graphics g) {
-        g.drawImage(newCs, (int) x, (int) y, 64, 64, null);
+        g.drawImage(cS, (int) x, (int) y, 64, 64, null);
     }
 
 }
