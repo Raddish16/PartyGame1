@@ -1,5 +1,10 @@
 To do list
 
+I altered the plane class, hope you don't mind, but I think they should start somewhere on the left side of the screen, maybe in the upper corner
+I added an arraylist of planes, and they each randomly select and save a move method when they are created
+I tried to create some functions, but I'm going to attempt a parabolic shape
+
+
 I’m going to try and make some graphics for the menu, I’m thinking the title will be 32-bit conspiracy but it can change
 -can you put the graphics you have in the textures folder when you're done?
 
