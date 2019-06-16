@@ -7,6 +7,7 @@ package partygame1;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -56,6 +57,10 @@ public class Bomber extends Creature {
     public void getInput() {
         yMove = 0;
         xMove = 0;
+        AffineTransform at = new AffineTransform();
+        // The angle of the rotation in radians
+        double rads = Math.toRadians(-1);
+        at.rotate(rads, x, y);
         if (handler.getKeyManager().up) {
             yMove = (-1) * speed;
         }
