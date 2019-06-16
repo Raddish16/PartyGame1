@@ -23,7 +23,7 @@ public class PlaneGameState extends State {
         this.handler = handler;
         planeList = new ArrayList<Plane>();
         bomber = new Bomber(this.handler, 500, 500, 32, 32);
-        planeList.add(new Plane(this.handler, 0, 500, 64, 64));
+        planeList.add(new Plane(this.handler, 0, 0, 64, 64));
         planeList.add(new Plane(this.handler, 100, 500, 64, 32));
         planeList.add(new Plane(this.handler, 200, 500, 64, 32));
     }

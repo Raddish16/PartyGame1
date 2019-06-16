@@ -24,7 +24,7 @@ public class Plane extends Creature {
         Assets.init();
         xMove = 0;
         yMove = -1;
-        moveMethod = (int)(Math.random() * 3);
+        moveMethod = (int) (Math.random() * 4);
     }
 
     public void move() {
@@ -36,15 +36,20 @@ public class Plane extends Creature {
         if (moveMethod == 1) {
             xMove = -(int) (5 * sin(count)) + (int) (.25 * count);
             yMove = -(int) (5 * sin(count)) - (int) (.25 * count);
-            
+
         } else if (moveMethod == 2) {
             xMove = (int) (5 * count);
             yMove = -(int) (5 * count);
+
+        } else if (moveMethod == 3) {
             
-        }else{
+            xMove = 12 + (int)(.25*count);
+            yMove = (int)(-count + 15 );
+            
+        } else {
             xMove = 4;
             yMove = -4;
-            
+
         }
         move();
     }
