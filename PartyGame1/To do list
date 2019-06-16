@@ -3,6 +3,7 @@ To do list
 I altered the plane class, hope you don't mind, but I think they should start somewhere on the left side of the screen, maybe in the upper corner
 I added an arraylist of planes, and they each randomly select and save a move method when they are created
 I tried to create some functions, but I'm going to attempt a parabolic shape
+It's not great, but it's a starting point. It's hard because we use the move method which takes in dx and dy basically, but it would be a lot easier to use just the x and y position functions.
 
 
 I’m going to try and make some graphics for the menu, I’m thinking the title will be 32-bit conspiracy but it can change
