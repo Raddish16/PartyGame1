@@ -38,14 +38,14 @@ public class PlaneGameState extends State {
         PlaneGameTerrain a,b,c;
         if (terrainSpawnCount > 90) {
            
-            a =(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
+            a =(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), -50, 64, 64));
             terrainList.add(a);
             if ((int) (Math.random() * 4 + 1) >= 2) {
-                b = (new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
+                b = (new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), -50, 64, 64));
                 terrainList.add(b);
             }
             if ((int) (Math.random() * 4 + 1) >= 3) {
-                c = (new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
+                c = (new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), -50, 64, 64));
                 terrainList.add(c);
             }
             terrainSpawnCount = 0;
