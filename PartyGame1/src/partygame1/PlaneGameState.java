@@ -6,39 +6,42 @@
 package partygame1;
 
 import java.awt.Graphics;
+import java.util.ArrayList;
 
 /**
  *
  * @author Yasuki Wu
  */
-public class PlaneGameState extends State{
+public class PlaneGameState extends State {
+
     private Handler handler;
     private Bomber bomber;
-    private Plane p1,p2,p3;
-    
-    public PlaneGameState(Handler handler){
+    private ArrayList<Plane> planeList;
+
+    public PlaneGameState(Handler handler) {
         super(handler);
         this.handler = handler;
-        bomber = new Bomber(this.handler,500,500,32,32);
-        p1 = new Plane(this.handler,200,500,64,64);
-        p2 = new Plane(this.handler,400,500,64,32);
-        p3 = new Plane(this.handler,600,500,64,32);
+        planeList = new ArrayList<Plane>();
+        bomber = new Bomber(this.handler, 500, 500, 32, 32);
+        planeList.add(new Plane(this.handler, 0, 500, 64, 64));
+        planeList.add(new Plane(this.handler, 100, 500, 64, 32));
+        planeList.add(new Plane(this.handler, 200, 500, 64, 32));
     }
 
     @Override
     public void tick() {
         bomber.tick();
-        p1.tick();
-        p2.tick();
-        p3.tick();
+        for (int x = 0; x < planeList.size(); x++) {
+            planeList.get(x).tick();
+        }
     }
 
     @Override
     public void render(Graphics g) {
         bomber.render(g);
-        p1.render(g);
-        p2.render(g);
-        p3.render(g);
+        for (int x = 0; x < planeList.size(); x++) {
+            planeList.get(x).render(g);
+        }
     }
-        
+
 }
