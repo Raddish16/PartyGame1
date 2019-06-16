@@ -38,8 +38,8 @@ public class Plane extends Creature {
             yMove = -(int) (5 * sin(count)) - (int) (.25 * count);
 
         } else if (moveMethod == 2) {
-            xMove = (int) (5 * count);
-            yMove = -(int) (5 * count);
+            xMove = 10 + (int)(.4*count);
+            yMove = (int)(-count + 11 );
 
         } else if (moveMethod == 3) {
             
