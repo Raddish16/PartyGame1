@@ -59,6 +59,9 @@ public class PlaneGameState extends State {
         bomber.tick();
         for (int x = 0; x < planeList.size(); x++) {
             planeList.get(x).tick();
+            if(planeList.get(x).getX() < 0 || planeList.get(x).getX() > handler.getWidth() || planeList.get(x).getY() < 0 || planeList.get(x).getY() > handler.getHeight()){
+                planeList.remove(x);
+            }
         }
         terrainSpawn();
 
@@ -88,5 +91,6 @@ public class PlaneGameState extends State {
                 planeList.add(new Plane(this.handler, 1400, (int) (Math.random() * 300), 64, 32));
             }
         }
+        
     }
 }
