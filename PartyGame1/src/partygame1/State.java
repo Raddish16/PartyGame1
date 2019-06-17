@@ -14,7 +14,7 @@ import java.awt.Graphics;
 public abstract class State {
 
     private static State current = null;
-    protected String name;
+    protected static String name;
 
     public String getName() {
         return name;
@@ -22,6 +22,7 @@ public abstract class State {
 
     public void setName(String name) {
         this.name = name;
+        handler.setName(name);
     }
 
     public static void setState(State state) {

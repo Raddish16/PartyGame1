@@ -12,7 +12,7 @@ package partygame1;
 public class Handler {
 
     private Game game;
-    private String statename = "";
+    private String stateName = "";
 
     // until needed private World world;
     public Handler(Game game) {
@@ -43,8 +43,14 @@ public class Handler {
     public Game getGame() {
         return game;
     }
-
+    
     /*public World getWorld(){
         return world;
     }*///until needed
+    public void setName(String name){
+        stateName = name;
+    }
+    public String getName(){
+        return stateName;
+    }
 }

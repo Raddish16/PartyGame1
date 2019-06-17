@@ -34,10 +34,12 @@ public class Plane extends Creature {
     public void tick() {
         count += .5;
         if (moveMethod == 1) {
+            
             xMove = -(int) (5 * sin(count)) + (int) (.25 * count);
             yMove = -(int) (5 * sin(count)) - (int) (.25 * count);
 
         } else if (moveMethod == 2) {
+            
             xMove = 10 + (int)(.4*count);
             yMove = (int)(-count + 11 );
 

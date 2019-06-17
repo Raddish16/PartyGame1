@@ -13,7 +13,7 @@ import java.awt.Graphics;
  */
 public class Player extends Creature {
 
-    private Game game;
+    private Handler handler;
     private double count = 0;
     private double first = 0;
     private boolean moveR = true;
@@ -21,7 +21,7 @@ public class Player extends Creature {
 
     public Player(Handler handler, float x, float y, int w, int h) {
         super(handler, x, y, w, h);
-        this.game = handler.getGame();
+        this.handler = handler;
 
     }
 
@@ -30,43 +30,44 @@ public class Player extends Creature {
         pastX = super.getX();
 
         if (State.getState() == handler.getGame().getState())/*This will always be true, fix*/ {
-            x = -40 + game.getMouseManager().getMouseX();
-            y = -23 + game.getMouseManager().getMouseY();
+            x = -40 + handler.getGame().getMouseManager().getMouseX();
+            y = -23 + handler.getGame().getMouseManager().getMouseY();
         } else {
-            if (game.getKeyManager().up) {
+            if (handler.getGame().getKeyManager().up) {
                 y -= 3;
             }
-            if (game.getKeyManager().down) {
+            if (handler.getGame().getKeyManager().down) {
                 y += 3;
             }
-            if (game.getKeyManager().left) {
+            if (handler.getGame().getKeyManager().left) {
                 x -= 3;
             }
-            if (game.getKeyManager().right) {
+            if (handler.getGame().getKeyManager().right) {
                 x += 3;
             }
         }
         if (pastX == x) {
-            
-        } else if(pastX < x){
+
+        } else if (pastX < x) {
             moveR = true;
-        }else{
+        } else {
             moveR = false;
         }
 
     }
 
     public void render(Graphics g) {
-
-        if (handler.getMouseManager().isLeftPressed() && moveR == true) {
-            //I want it to do the initial click as him getting bopped on the head, I can't figure it out
-            g.drawImage(Assets.madmouseR.get(0), (int) x, (int) y, 70, 70, null);
-        } else if (handler.getMouseManager().isLeftPressed() && moveR == false) {
-            g.drawImage(Assets.madmouseL.get(0), (int) x, (int) y, 70, 70, null);
-        } else if(moveR == true){
-            g.drawImage(Assets.normouseR.get((int) count % 8), (int) x, (int) y, 70, 70, null);
-        }else{
-            g.drawImage(Assets.normouseL.get((int) count % 8), (int) x, (int) y, 70, 70, null);
+        if (handler.getName().equals("menuState")) {
+            if (handler.getMouseManager().isLeftPressed() && moveR == true) {
+                //I want it to do the initial click as him getting bopped on the head, I can't figure it out
+                g.drawImage(Assets.madmouseR.get(0), (int) x, (int) y, 70, 70, null);
+            } else if (handler.getMouseManager().isLeftPressed() && moveR == false) {
+                g.drawImage(Assets.madmouseL.get(0), (int) x, (int) y, 70, 70, null);
+            } else if (moveR == true) {
+                g.drawImage(Assets.normouseR.get((int) count % 8), (int) x, (int) y, 70, 70, null);
+            } else {
+                g.drawImage(Assets.normouseL.get((int) count % 8), (int) x, (int) y, 70, 70, null);
+            }
         }
     }
 

@@ -13,9 +13,12 @@ import java.awt.Graphics;
  */
 public class MenuState extends State {
 
-    Player Player1;
+    private Player Player1;
     private UIManager uiManager;
     private int aniLoop;
+    
+
+    
 
     public MenuState(Handler handler) {
         super(handler);
@@ -28,6 +31,7 @@ public class MenuState extends State {
                 State.setState(handler.getGame().gameState);
             }
         }));
+        super.setName("menuState");
     }
 
     public void tick() {
@@ -38,8 +42,9 @@ public class MenuState extends State {
     }
 
     public void render(Graphics graph) {
-        graph.drawImage(Assets.MenuTitle, 75, 100, 512*3, 32*3, null);
+        graph.drawImage(Assets.MenuTitle, 75, 100, 512 * 3, 32 * 3, null);
         uiManager.render(graph);
         Player1.render(graph);
     }
+    
 }

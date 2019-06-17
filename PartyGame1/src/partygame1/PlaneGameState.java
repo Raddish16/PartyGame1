@@ -31,6 +31,7 @@ public class PlaneGameState extends State {
         planeList.add(new Plane(this.handler, 200, 500, 64, 32));
         terrainList.add(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
         terrainSpawnCount = 90;
+        super.setName("PlaneGameState");
     }
 
     public void terrainSpawn() {
