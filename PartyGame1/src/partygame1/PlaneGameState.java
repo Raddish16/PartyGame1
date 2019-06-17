@@ -36,10 +36,10 @@ public class PlaneGameState extends State {
 
     public void terrainSpawn() {
         terrainSpawnCount++;
-        PlaneGameTerrain a,b,c;
+        PlaneGameTerrain a, b, c;
         if (terrainSpawnCount > 90) {
-           
-            a =(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), -50, 64, 64));
+
+            a = (new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), -50, 64, 64));
             terrainList.add(a);
             if ((int) (Math.random() * 4 + 1) >= 2) {
                 b = (new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), -50, 64, 64));
@@ -61,11 +61,11 @@ public class PlaneGameState extends State {
             planeList.get(x).tick();
         }
         terrainSpawn();
-        
+
         for (PlaneGameTerrain t : terrainList) {
             t.tick();
         }
-        
+        spawn();
     }
 
     @Override
@@ -73,11 +73,20 @@ public class PlaneGameState extends State {
         for (PlaneGameTerrain t : terrainList) {
             t.render(g);
         }
-        
+
         bomber.render(g);
         for (int x = 0; x < planeList.size(); x++) {
             planeList.get(x).render(g);
         }
     }
 
+    public void spawn() {
+        if (Math.random() > .95) {
+            if (Math.random() > .5) {
+                planeList.add(new Plane(this.handler, 0, (int) (Math.random() * 300), 64, 32));
+            }else{
+                planeList.add(new Plane(this.handler, 1400, (int) (Math.random() * 300), 64, 32));
+            }
+        }
+    }
 }
