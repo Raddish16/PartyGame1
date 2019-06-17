@@ -5,6 +5,7 @@
  */
 package partygame1;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
@@ -13,31 +14,38 @@ import java.awt.image.BufferedImage;
  *
  * @author Yasuki Wu
  */
-public class Bullet extends Creature{
+public class Bullet extends Creature {
+
     private BufferedImage bullet;
     private Rectangle bounds;
     private Handler handler;
+
     public Bullet(Handler handler, float x, float y, int width, int height) {
-        super(handler, x+width/2, y+height/2, width, height);
+        super(handler, x, y, width, height);
         this.handler = handler;
-        bounds = new Rectangle((int)x,(int)y,width,height);
+        bounds = new Rectangle((int) x, (int) y, width, height);
         bullet = Assets.turret.get(8);
         xMove = 0;
-        yMove = -5;
+        yMove = -speed;
     }
-    public void move(){
+
+    public void move() {
         super.move();
     }
-    public void tick(){
+
+    public void tick() {
         move();
     }
-    public void render(Graphics g){
-        g.drawImage(bullet, (int)x, (int)y, null);
+
+    public void render(Graphics g) {
+        g.drawImage(bullet, (int) x, (int) y, width, height, null);
     }
-    public void addxMove(int x){
-        xMove+=x;
+
+    public void addxMove(int x) {
+        xMove += x;
     }
-    public void addyMove(int y){
-        yMove+=y;
+
+    public void addyMove(int y) {
+        yMove += y;
     }
 }

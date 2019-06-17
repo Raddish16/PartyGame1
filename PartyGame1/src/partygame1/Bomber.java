@@ -19,8 +19,8 @@ import java.util.ArrayList;
 public class Bomber extends Creature {
 
     private Handler handler;
-    private int health, rotated, rotatedX, rotatedY;
-    private BufferedImage cS, newCs;
+    private int health, rotated, rotatedX, rotatedY, tickCount;
+    private BufferedImage cS, newCs, currentTurret;
     private ArrayList<Bullet> turretBullets;
 
     public Bomber(Handler handler, float x, float y, int width, int height) {
@@ -33,9 +33,11 @@ public class Bomber extends Creature {
         rotated = 0;
         rotatedX = 0;
         rotatedY = 0;
+        tickCount = 60;
         Assets.init();
         cS = Assets.bomber.get(0);
         turretBullets = new ArrayList<>();
+        currentTurret = Assets.turret.get(4);
     }
 
     public void rotateImage(double degrees) {
@@ -76,11 +78,21 @@ public class Bomber extends Creature {
             yMove = speed / 2;
         }
         if (handler.getKeyManager().space) {
-            Bullet b = new Bullet(handler, x, y, width, height);
-            b.addxMove(rotatedX);
-            b.addyMove(rotatedY);
-            turretBullets.add(b);
-        }
+            if(tickCount>5)
+                currentTurret = Assets.turret.get(0);
+            else
+                currentTurret = Assets.turret.get(4);
+            if(tickCount>10){
+                Bullet b = new Bullet(handler, (int)x, (int)y, 64, 64);
+                b.addxMove(rotatedX);
+                b.addyMove(rotatedY);
+                turretBullets.add(b);
+                tickCount = 0;
+                currentTurret = Assets.turret.get(4);
+                
+            }
+        }else
+            currentTurret = Assets.turret.get(4);
         if (handler.getKeyManager().d)
             
             
@@ -151,6 +163,7 @@ public class Bomber extends Creature {
     }
 
     public void tick() {
+        tickCount++;
         getInput();
         move();
         if (xMove == 0 && yMove == (-1) * speed) {
@@ -175,7 +188,7 @@ public class Bomber extends Creature {
     public void render(Graphics g) {
         
         g.drawImage(cS, (int) x, (int) y, 64, 64, null);
-        g.drawImage(Assets.turret.get(4), (int) x, (int) y, 64, 64, null);
+        g.drawImage(currentTurret, (int) x, (int) y, 64, 64, null);
         for (Bullet b : turretBullets) {
             b.render(g);
         }
