@@ -55,12 +55,14 @@ public class Game implements Runnable {
         
         gameState = new GameState(handler);
         menuState = new MenuState(handler);
+        
         State.setState(menuState);
 
     }
 
     private void tick() {
         keyManager.tick();
+        
 
         if (State.getState() != null) {
             State.getState().tick();
