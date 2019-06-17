@@ -77,9 +77,11 @@ public class Player extends Creature {
             } else if (moveR == true) {
                 g.drawImage(Assets.normouseR.get((int)count2 % 8), (int) x, (int) y, 70, 70, null);
                 mouse = 0;
+                count = 0;
             } else {
                 g.drawImage(Assets.normouseL.get((int)count2 % 8), (int) x, (int) y, 70, 70, null);
                 mouse = 0;
+                count = 0;
             }
         }
     }
