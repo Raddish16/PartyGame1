@@ -52,9 +52,9 @@ public class Game implements Runnable {
         display.getCanvas().addMouseMotionListener(mouseManager);
 
         handler = new Handler(this);
-        menuState = new MenuState(handler);
+        
         gameState = new GameState(handler);
-
+        menuState = new MenuState(handler);
         State.setState(menuState);
 
     }
