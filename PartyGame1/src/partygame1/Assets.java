@@ -98,5 +98,16 @@ public class Assets {
                 turret.add(turretSheet.crop(x, y, width, height));
             }
         }
+        
     }
+    /*public BufferedImage[] retrieve(String charName){
+        if(charName.equals("Puppet Master")){
+            return;
+        }else if(charName.equals("Vigilante")){
+            return;
+        }else if(charName.equals("Banjo")){
+            return;
+        }
+        return null;
+    }*/
 }
