@@ -37,6 +37,7 @@ public abstract class State {
 
     public State(Handler handler) {
         this.handler = handler;
+        setName("State");
     }
 
     public abstract void tick();

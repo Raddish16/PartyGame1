@@ -30,7 +30,7 @@ public class GameState extends State {
         this.handler = handler;
         planeGameState = new PlaneGameState(this.handler);
         planeGame = true;
-        super.setName("gameState");
+        
     }
 
     int testCount = 0;

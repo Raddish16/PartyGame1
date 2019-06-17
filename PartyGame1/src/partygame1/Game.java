@@ -52,12 +52,10 @@ public class Game implements Runnable {
         display.getCanvas().addMouseMotionListener(mouseManager);
 
         handler = new Handler(this);
-
-        gameState = new GameState(handler);
         menuState = new MenuState(handler);
+        gameState = new GameState(handler);
+
         State.setState(menuState);
-        
-       
 
     }
 
@@ -165,13 +163,16 @@ public class Game implements Runnable {
     public MouseManager getMouseManager() {
         return mouseManager;
     }
-    public State getState(){
+
+    public State getState() {
         return State.getState();
     }
-    public Display getDisplay(){
+
+    public Display getDisplay() {
         return display;
     }
-    public Graphics getGraphics(){
+
+    public Graphics getGraphics() {
         return graph;
     }
 }
