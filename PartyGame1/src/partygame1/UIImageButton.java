@@ -5,8 +5,6 @@
  */
 package partygame1;
 
-
-
 /**
  *
  * @author Yasuki Wu
@@ -16,29 +14,38 @@ import java.awt.image.BufferedImage;
 
 public class UIImageButton extends UIObject {
 
-	private BufferedImage[] images;
-	private ClickListener clicker;
-	
-	public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
-		super(x, y, width, height);
-		this.images = images;
-		this.clicker = clicker;
-	}
+    private BufferedImage[] images;
+    private ClickListener clicker;
+    private int count = 0;
 
-	@Override
-	public void tick() {}
+    public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
+        super(x, y, width, height);
+        this.images = images;
+        this.clicker = clicker;
+    }
 
-	@Override
-	public void render(Graphics g) {
-		if(hover)
-			g.drawImage(images[1], (int) x, (int) y, width, height, null);
-		else
-			g.drawImage(images[0], (int) x, (int) y, width, height, null);
-	}
+    @Override
+    public void tick() {
+        if(count < 5){
+            count += 1;
+        }else{
+            count = 0;
+            count += 1;
+        }
+    }
 
-	@Override
-	public void onClick() {
-		clicker.onClick();
-	}
+    @Override
+    public void render(Graphics g) {
+        if (hover) {
+                g.drawImage(images[(count)], (int) x, (int) y, width, height, null);
+        } else {
+            g.drawImage(images[0], (int) x, (int) y, width, height, null);
+        }
+    }
+
+    @Override
+    public void onClick() {
+        clicker.onClick();
+    }
 
 }

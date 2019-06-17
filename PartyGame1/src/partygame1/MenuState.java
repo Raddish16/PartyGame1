@@ -25,7 +25,7 @@ public class MenuState extends State {
         Player1 = new Player(handler, 0, 0, 70, 70);
         uiManager = new UIManager(handler);
         handler.getMouseManager().setUIManager(uiManager);
-        uiManager.addObject(new UIImageButton(handler.getWidth() / 2 - 64, handler.getHeight() / 2 - 64, 128, 128, Assets.startBtn, new ClickListener() {
+        uiManager.addObject(new UIImageButton(handler.getWidth() / 2 - 200, handler.getHeight() / 2 - 32, 130*3, 32*3, Assets.startBtn, new ClickListener() {
             @Override
             public void onClick() {
                 State.setState(handler.getGame().gameState);

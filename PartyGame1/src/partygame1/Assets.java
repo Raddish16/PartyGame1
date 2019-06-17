@@ -23,7 +23,7 @@ public class Assets {
 
     public static void init() {
         mouseSheet = new SpriteSheet(imageLoader.loadImage("/textures/Mouse updated.png"));
-        startSheet = new SpriteSheet(imageLoader.loadImage("/textures/startSheet.png"));
+        startSheet = new SpriteSheet(imageLoader.loadImage("/textures/Start Button.png"));
         bomberSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberSheet.png"));
         planeSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniPlaneSheet.png"));
         bRobotSheet = new SpriteSheet(imageLoader.loadImage("/textures/robotSheet.png"));
@@ -39,9 +39,10 @@ public class Assets {
         
         greenMonster = new ArrayList<BufferedImage>();
         
-        startBtn = new BufferedImage[2];
-        startBtn[0] = startSheet.crop(0, 0, 32, 32);
-        startBtn[1] = startSheet.crop(0, 32, 32, 32);
+        startBtn = new BufferedImage[6];
+        for(int x = 0; x < 6; x++){
+            startBtn[x] = startSheet.crop(0, 34*x, 130, 32);
+        }
         
         for (int y = 0; y < 156; y += 26) {
             for (int x = 0; x < 130; x += 26) {
@@ -68,10 +69,7 @@ public class Assets {
                 mouse1[4*x + y] = sheet.crop(26*x, 26*y, 26, 26);
             }
         }*/
-        greenMonster.add(imageLoader.loadImage("/textures/3160.jpg"));
-        greenMonster.add(imageLoader.loadImage("/textures/31941.jpg"));
-        greenMonster.add(imageLoader.loadImage("/textures/54550.jpg"));
-        greenMonster.add(imageLoader.loadImage("/textures/93037.jpg"));
+        
         
         mouse2 = new BufferedImage[4][4];
         for (int c = 0; c < mouse2[0].length; c++) {
