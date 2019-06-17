@@ -5,12 +5,12 @@
  */
 package partygame1;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
-
 
 /**
  *
@@ -19,9 +19,9 @@ import java.util.ArrayList;
 public class Bomber extends Creature {
 
     private Handler handler;
-    private int health, rotated;
+    private int health, rotated, rotatedX, rotatedY;
     private BufferedImage cS, newCs;
-    private ArrayList<Bullet>turretBullets;
+    private ArrayList<Bullet> turretBullets;
 
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -31,6 +31,8 @@ public class Bomber extends Creature {
         xMove = 0;
         yMove = 0;
         rotated = 0;
+        rotatedX = 0;
+        rotatedY = 0;
         Assets.init();
         cS = Assets.bomber.get(0);
         turretBullets = new ArrayList<>();
@@ -65,18 +67,24 @@ public class Bomber extends Creature {
             yMove = (-1) * speed;
         }
         if (handler.getKeyManager().left) {
-            xMove = (-1)*speed;
+            xMove = (-1) * speed;
         }
         if (handler.getKeyManager().right) {
             xMove = speed;
         }
         if (handler.getKeyManager().down) {
-            yMove = speed/2;
+            yMove = speed / 2;
         }
         if (handler.getKeyManager().space) {
-            turretBullets.add(new Bullet(handler, x,y,width,height));
+            Bullet b = new Bullet(handler, x, y, width, height);
+            b.addxMove(rotatedX);
+            b.addyMove(rotatedY);
+            turretBullets.add(b);
         }
-        /*if (handler.getKeyManager().left) {
+        if (handler.getKeyManager().d)
+            
+            
+            /*if (handler.getKeyManager().left) {
             rotated -= 1;
             newCs = newRotateImage(rotated);
             if (yMove <= 0) {
@@ -133,7 +141,9 @@ public class Bomber extends Creature {
             }
 
         }
-         */
+         */ {
+            
+        }
     }
 
     public void move() {
@@ -157,14 +167,16 @@ public class Bomber extends Creature {
         if (xMove == 0 && yMove == (-1) * speed) {
             newCs = cS;
         }
-        for(Bullet b:turretBullets){
+        for (Bullet b : turretBullets) {
             b.tick();
         }
     }
 
     public void render(Graphics g) {
+        
         g.drawImage(cS, (int) x, (int) y, 64, 64, null);
-        for(Bullet b:turretBullets){
+        g.drawImage(Assets.turret.get(4), (int) x, (int) y, 64, 64, null);
+        for (Bullet b : turretBullets) {
             b.render(g);
         }
     }

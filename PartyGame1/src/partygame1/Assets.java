@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class Assets {
 
     private static final int width = 32, height = 32;
-    public static SpriteSheet mouseSheet, startSheet, bomberSheet, planeSheet, bRobotSheet;
-    public static ArrayList<BufferedImage> mouse, madmouseR, madmouseL, normouseR, normouseL, bomber, plane, bRobot, greenMonster;//easier to iterate through
+    public static SpriteSheet mouseSheet, startSheet, bomberSheet, planeSheet, bRobotSheet, turretSheet;
+    public static ArrayList<BufferedImage> mouse, madmouseR, madmouseL, normouseR, normouseL, bomber, plane, bRobot, greenMonster,turret;//easier to iterate through
     public static BufferedImage[][] mouse2;//easier to reference
     public static BufferedImage[] startBtn;
     public static BufferedImage MenuTitle;
@@ -27,7 +27,7 @@ public class Assets {
         bomberSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberSheet.png"));
         planeSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniPlaneSheet.png"));
         bRobotSheet = new SpriteSheet(imageLoader.loadImage("/textures/robotSheet.png"));
-        
+        turretSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberTurretSheet.png"));
         
         MenuTitle = imageLoader.loadImage("/textures/Menu Title.png");
         
@@ -36,6 +36,7 @@ public class Assets {
         normouseR = new ArrayList<BufferedImage>();
         madmouseL = new ArrayList<BufferedImage>();
         normouseL = new ArrayList<BufferedImage>();
+        turret = new ArrayList<>();
         
         greenMonster = new ArrayList<BufferedImage>();
         
@@ -92,7 +93,10 @@ public class Assets {
             for(int x = 0; x<96;x+=32){
                 bRobot.add(bRobotSheet.crop(x, y, width, height));
             }
+        }for(int y = 0; y<96;y+=32){
+            for(int x = 0; x<96;x+=32){
+                turret.add(turretSheet.crop(x, y, width, height));
+            }
         }
-
     }
 }

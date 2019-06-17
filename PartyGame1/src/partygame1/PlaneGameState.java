@@ -5,6 +5,7 @@
  */
 package partygame1;
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.util.ArrayList;
 
@@ -73,6 +74,8 @@ public class PlaneGameState extends State {
 
     @Override
     public void render(Graphics g) {
+        g.setColor(new Color(113, 204, 65));
+        g.fillRect(0,0,handler.getWidth(),handler.getHeight());
         for (PlaneGameTerrain t : terrainList) {
             t.render(g);
         }

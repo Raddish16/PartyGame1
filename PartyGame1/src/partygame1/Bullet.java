@@ -21,7 +21,7 @@ public class Bullet extends Creature{
         super(handler, x+width/2, y+height/2, width, height);
         this.handler = handler;
         bounds = new Rectangle((int)x,(int)y,width,height);
-        bullet = Assets.bRobot.get(0);
+        bullet = Assets.turret.get(8);
         xMove = 0;
         yMove = -5;
     }
@@ -34,5 +34,10 @@ public class Bullet extends Creature{
     public void render(Graphics g){
         g.drawImage(bullet, (int)x, (int)y, null);
     }
-    
+    public void addxMove(int x){
+        xMove+=x;
+    }
+    public void addyMove(int y){
+        yMove+=y;
+    }
 }
