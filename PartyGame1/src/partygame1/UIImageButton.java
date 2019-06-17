@@ -28,7 +28,7 @@ public class UIImageButton extends UIObject {
     @Override
     public void tick() {
         count++;
-        if(count%30 == 0){
+        if(count%20 == 0){
             image++;
         }
         if(image ==6){
