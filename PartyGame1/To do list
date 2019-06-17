@@ -1,5 +1,11 @@
 To do list
 
+Fixed the mouse thing, and added some textures for bullets and animation for the turret firing
+We could reduce the lag on my laptop by adding a soft cap on the number of planes/grass on the screen. 
+Inititalize them all at the beginning of the planeGame in the arrayLists, and when they move off the screen
+recreate their x and y and their movement patterns. I will try this tommorow and see how it works. If we want difficulty scaling
+with the number of planes there could be certain points where more planes are added to the arraylist and then behave as above
+
 I altered the plane class, hope you don't mind, but I think they should start somewhere on the left side of the screen, maybe in the upper corner
 I added an arraylist of planes, and they each randomly select and save a move method when they are created
 I tried to create some functions, but I'm going to attempt a parabolic shape
