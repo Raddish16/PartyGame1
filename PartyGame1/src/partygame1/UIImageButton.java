@@ -27,14 +27,17 @@ public class UIImageButton extends UIObject {
 
     @Override
     public void tick() {
-        count++;
-        if(count%20 == 0){
-            image++;
-        }
-        if(image ==6){
+        if(hover){
+            count++;
+            if(count%20 == 0){
+                image++;
+            }
+            if(image ==6){
+                image = 0;
+                count = 0;
+            }
+        }else
             image = 0;
-            count = 0;
-        }
     }
 
     @Override
