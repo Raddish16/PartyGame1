@@ -78,7 +78,7 @@ public class Bomber extends Creature {
             yMove = speed / 2;
         }
         if (handler.getKeyManager().space) {
-            if(tickCount>5)
+            if(tickCount<5)
                 currentTurret = Assets.turret.get(0);
             else
                 currentTurret = Assets.turret.get(4);
@@ -91,6 +91,7 @@ public class Bomber extends Creature {
                 currentTurret = Assets.turret.get(4);
                 
             }
+            
         }else
             currentTurret = Assets.turret.get(4);
         if (handler.getKeyManager().d)
