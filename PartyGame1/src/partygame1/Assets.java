@@ -59,7 +59,7 @@ public class Assets {
         for (int y = 14; y < 22; y++) {
             normouseL.add(mouse.get(y));
         }
-        for (int y = 22; y < 27; y++) {
+        for (int y = 22; y < 28; y++) {
             madmouseL.add(mouse.get(y));
         }
 
