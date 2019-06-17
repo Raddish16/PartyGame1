@@ -17,6 +17,7 @@ public class UIImageButton extends UIObject {
     private BufferedImage[] images;
     private ClickListener clicker;
     private int count = 0;
+    private int image = 0;
 
     public UIImageButton(float x, float y, int width, int height, BufferedImage[] images, ClickListener clicker) {
         super(x, y, width, height);
@@ -26,18 +27,20 @@ public class UIImageButton extends UIObject {
 
     @Override
     public void tick() {
-        if(count < 5){
-            count += 1;
-        }else{
+        count++;
+        if(count%30 == 0){
+            image++;
+        }
+        if(image ==6){
+            image = 0;
             count = 0;
-            count += 1;
         }
     }
 
     @Override
     public void render(Graphics g) {
         if (hover) {
-                g.drawImage(images[(count)], (int) x, (int) y, width, height, null);
+                g.drawImage(images[(image)], (int) x, (int) y, width, height, null);
         } else {
             g.drawImage(images[0], (int) x, (int) y, width, height, null);
         }
