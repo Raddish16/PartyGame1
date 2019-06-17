@@ -49,6 +49,7 @@ public class Handler {
     }*///until needed
     public void setName(String name){
         stateName = name;
+        
     }
     public String getName(){
         return stateName;

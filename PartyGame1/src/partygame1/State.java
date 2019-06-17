@@ -14,14 +14,11 @@ import java.awt.Graphics;
 public abstract class State {
 
     private static State current = null;
-    protected static String name;
+    
 
-    public String getName() {
-        return name;
-    }
+    
 
     public void setName(String name) {
-        this.name = name;
         handler.setName(name);
     }
 
@@ -37,7 +34,7 @@ public abstract class State {
 
     public State(Handler handler) {
         this.handler = handler;
-        setName("State");
+        
     }
 
     public abstract void tick();
