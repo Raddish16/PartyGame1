@@ -27,23 +27,24 @@ public class UIImageButton extends UIObject {
 
     @Override
     public void tick() {
-        if(hover){
+        if (hover) {
             count++;
-            if(count%20 == 0){
+            if (count % 20 == 0) {
                 image++;
             }
-            if(image ==6){
+            if (image == 6) {
                 image = 0;
                 count = 0;
             }
-        }else
+        } else {
             image = 0;
+        }
     }
 
     @Override
     public void render(Graphics g) {
         if (hover) {
-                g.drawImage(images[(image)], (int) x, (int) y, width, height, null);
+            g.drawImage(images[(image)], (int) x, (int) y, width, height, null);
         } else {
             g.drawImage(images[0], (int) x, (int) y, width, height, null);
         }

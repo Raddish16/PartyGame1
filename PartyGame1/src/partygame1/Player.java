@@ -14,8 +14,8 @@ import java.awt.Graphics;
 public class Player extends Creature {
 
     private Handler handler;
-    private double count = 0;
-    private double first = 0;
+    private int count, mouse = 0;
+    private double  count2,first = 0;
     private boolean moveR = true;
     private float pastX, pastY;
 
@@ -26,7 +26,17 @@ public class Player extends Creature {
     }
 
     public void tick() {
-        count += .05;
+        count2 += 0.5;
+        count++;
+        if (count % 20 == 0) {
+            mouse++;
+        }
+        if (mouse == 4) {
+            mouse = 0;
+            count = 0;
+        }
+        
+
         pastX = super.getX();
 
         if (State.getState() == handler.getGame().getState())/*This will always be true, fix*/ {
@@ -55,18 +65,21 @@ public class Player extends Creature {
         }
 
     }
+    
 
     public void render(Graphics g) {
         if (handler.getName().equals("menuState")) {
             if (handler.getMouseManager().isLeftPressed() && moveR == true) {
                 //I want it to do the initial click as him getting bopped on the head, I can't figure it out
-                g.drawImage(Assets.madmouseR.get(0), (int) x, (int) y, 70, 70, null);
+                g.drawImage(Assets.madmouseR.get(mouse), (int) x, (int) y, 70, 70, null);
             } else if (handler.getMouseManager().isLeftPressed() && moveR == false) {
-                g.drawImage(Assets.madmouseL.get(0), (int) x, (int) y, 70, 70, null);
+                g.drawImage(Assets.madmouseL.get(mouse), (int) x, (int) y, 70, 70, null);
             } else if (moveR == true) {
-                g.drawImage(Assets.normouseR.get((int) count % 8), (int) x, (int) y, 70, 70, null);
+                g.drawImage(Assets.normouseR.get((int)count2 % 8), (int) x, (int) y, 70, 70, null);
+                mouse = 0;
             } else {
-                g.drawImage(Assets.normouseL.get((int) count % 8), (int) x, (int) y, 70, 70, null);
+                g.drawImage(Assets.normouseL.get((int)count2 % 8), (int) x, (int) y, 70, 70, null);
+                mouse = 0;
             }
         }
     }
