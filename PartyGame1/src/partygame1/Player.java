@@ -38,7 +38,7 @@ public class Player extends Creature {
 
         pastX = super.getX();
 
-        if (State.getState() == handler.getGame().getState())/*This will always be true, fix*/ {
+        if (handler.getName().equals("menuState"))/*This will always be true, fix*/ {
             x = -40 + handler.getGame().getMouseManager().getMouseX();
             y = -23 + handler.getGame().getMouseManager().getMouseY();
         } else {
