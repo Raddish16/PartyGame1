@@ -1,5 +1,11 @@
 To do list
 
+Not to sound repetitive, but I watched another video by the same people about roguelike games.
+Basically, when you die you lose everything and have to start over. The maps are randomly generated each time and you have to get more skill.
+I was thinking we could incorporate this by having last man standing gameplay where the last person to survive wins.
+You would face easier bosses, and then have to get health packs or something to regenerate.
+We could have the mini games by having these mysterious doors which open to them, and give benefits like coins and stuff.
+
 I watched an interesting video on death animations, or what happens to your character when you die.
 I'm thinking that we should implement a system where you change characters when you die, and also lose some of the currency you build up as the game goes on.
 This would encourage collaboration on minigames even when two people are working against each other.
