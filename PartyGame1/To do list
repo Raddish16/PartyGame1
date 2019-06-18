@@ -1,5 +1,12 @@
 To do list
 
+I watched an interesting video on death animations, or what happens to your character when you die.
+I'm thinking that we should implement a system where you change characters when you die, and also lose some of the currency you build up as the game goes on.
+This would encourage collaboration on minigames even when two people are working against each other.
+Here's the link, this is a really good channel for thinking about gameplay.
+https://www.youtube.com/watch?v=6WyalnKQIpg
+Also, watched a video about AI and overall game feel, I can summarize for you if you want.
+
 Fixed the mouse thing, and added some textures for bullets and animation for the turret firing
 We could reduce the lag on my laptop by adding a soft cap on the number of planes/grass on the screen. 
 Inititalize them all at the beginning of the planeGame in the arrayLists, and when they move off the screen
