@@ -96,7 +96,7 @@ public class Bomber extends Creature {
             currentTurret = Assets.turret.get(4);
         if (handler.getKeyManager().d)
             
-            
+                   
             /*if (handler.getKeyManager().left) {
             rotated -= 1;
             newCs = newRotateImage(rotated);
