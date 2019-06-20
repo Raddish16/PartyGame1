@@ -20,7 +20,8 @@ public class PlaneGameState extends State {
     private ArrayList<Plane> planeList;
     private ArrayList<PlaneGameTerrain> terrainList;
     private int planeNumber;//will hold the number of planes onscreen, will be scaled with time
-    
+    private Plane ppp;
+    private Bullet bbb;
     public PlaneGameState(Handler handler) {
         super(handler);
         this.handler = handler;
@@ -28,13 +29,18 @@ public class PlaneGameState extends State {
         planeList = new ArrayList<Plane>();
         terrainList = new ArrayList<>();
         bomber = new Bomber(this.handler, 500, 500, 32, 32);
-        planeList.add(new Plane(this.handler, 0, 0, 64, 64));
-        planeList.add(new Plane(this.handler, 100, 500, 64, 32));
-        planeList.add(new Plane(this.handler, 200, 500, 64, 32));
+        
         terrainList.add(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
         handler.setName("PlaneGameState");
         terrainSpawn();
         spawn();
+        ppp = new Plane(handler,500,500,64,64);
+        ppp.setxMove(0);
+        ppp.setyMove(0);
+        
+        bbb = new Bullet(handler,600,500,64,64);
+        bbb.setxMove(0);
+        bbb.setyMove(0);
     }
     
     public void terrainSpawn() {
@@ -82,6 +88,7 @@ public class PlaneGameState extends State {
         }
     }
     
+    
     @Override
     public void render(Graphics g) {
         g.setColor(new Color(113, 204, 65));
@@ -94,17 +101,19 @@ public class PlaneGameState extends State {
         for (Plane p : planeList) {
             p.render(g);
         }
+        ppp.render(g);
+        bbb.render(g);
+        
     }
     
     public void spawn() {
         for (int x = 0; x < planeNumber; x++) {
-            if (Math.random() > .95) {
                 if (Math.random() > .5) {
                     planeList.add(new Plane(this.handler, 0, (int) (Math.random() * 300), 64, 64));
                 } else {
                     planeList.add(new Plane(this.handler, 1400, (int) (Math.random() * 300), 64, 64));
                 }
-            }
+            
         }
     }
 }

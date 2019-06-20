@@ -23,10 +23,15 @@ public class Bullet extends Creature {
     public Bullet(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         this.handler = handler;
-        bounds = new Rectangle((int) x, (int) y, width, height);
+        bounds = new Rectangle((int)x+27, (int)y+18, 9, 8);
         bullet = Assets.turret.get(8);
+        speed =5;
         xMove = 0;
-        yMove = -5;
+        yMove = -speed;
+    }
+    
+    public Rectangle getBounds(){
+        return bounds;
     }
 
     public void move() {
@@ -39,6 +44,8 @@ public class Bullet extends Creature {
 
     public void render(Graphics g) {
         g.drawImage(bullet, (int) x, (int) y, width, height, null);
+        g.setColor(Color.black);
+        g.drawRect((int)x+27, (int)y+18, 9, 8);
     }
 
     public void addxMove(int x) {

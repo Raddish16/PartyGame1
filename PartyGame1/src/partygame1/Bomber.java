@@ -19,7 +19,7 @@ import java.util.ArrayList;
 public class Bomber extends Creature {
 
     private Handler handler;
-    private int health, rotated, rotatedX, rotatedY, tickCount;
+    private int health, rotated, modX, modY, tickCount;
     private BufferedImage cS, newCs, currentTurret;
     private ArrayList<Bullet> turretBullets;
 
@@ -31,8 +31,8 @@ public class Bomber extends Creature {
         xMove = 0;
         yMove = 0;
         rotated = 0;
-        rotatedX = 0;
-        rotatedY = 0;
+        modX = 0;
+        modY = -5;
         tickCount = 60;
         Assets.init();
         cS = Assets.bomber.get(0);
@@ -84,8 +84,8 @@ public class Bomber extends Creature {
                 currentTurret = Assets.turret.get(4);
             if(tickCount>10){
                 Bullet b = new Bullet(handler, (int)x, (int)y, 64, 64);
-                b.addxMove(rotatedX);
-                b.addyMove(rotatedY);
+                b.setxMove(modX);
+                b.setyMove(modY);
                 turretBullets.add(b);
                 tickCount = 0;
                 currentTurret = Assets.turret.get(4);
@@ -94,8 +94,7 @@ public class Bomber extends Creature {
             
         }else
             currentTurret = Assets.turret.get(4);
-        if (handler.getKeyManager().d)
-            
+        
                    
             /*if (handler.getKeyManager().left) {
             rotated -= 1;
