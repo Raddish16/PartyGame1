@@ -157,6 +157,10 @@ public class Bomber extends Creature {
             
         }
     }
+    
+    public ArrayList<Bullet> getBullets(){
+        return turretBullets;
+    }
 
     public void move() {
         super.move();
