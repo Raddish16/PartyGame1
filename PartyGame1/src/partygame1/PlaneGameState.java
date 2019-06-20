@@ -72,10 +72,10 @@ public class PlaneGameState extends State {
             t.tick();
             if(t.getY()>handler.getHeight()+20){
                 t.setX((int)(Math.random()*handler.getWidth()));
-                t.setY((int)(Math.random()*handler.getHeight()));
+                t.setY(-50);
             }
         }
-        spawn();
+      //  spawn();
     }
 
     @Override
