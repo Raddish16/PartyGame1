@@ -30,6 +30,9 @@ public class Plane extends Creature {
     public void move() {
         super.move();;
     }
+    public void resetCount(){
+        count = 0;
+    }
 
     public void tick() {
         count += .5;
