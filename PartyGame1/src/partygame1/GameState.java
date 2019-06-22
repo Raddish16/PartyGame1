@@ -29,9 +29,9 @@ public class GameState extends State {
         Player1 = new Player(handler, 20, 20, 70, 70);
         this.handler = handler;
         planeGameState = new PlaneGameState(this.handler);
-        planeGame = false;
+        planeGame = true;
         twov1gamestate = new Twov1GameState(this.handler);
-        twov1 = true;
+        twov1 = false;
         handler.setName("gameState");
     }
 
