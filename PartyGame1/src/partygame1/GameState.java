@@ -29,8 +29,9 @@ public class GameState extends State {
         Player1 = new Player(handler, 20, 20, 70, 70);
         this.handler = handler;
         planeGameState = new PlaneGameState(this.handler);
-        planeGame = true;
+        planeGame = false;
         twov1gamestate = new Twov1GameState(this.handler);
+        twov1 = true;
         handler.setName("gameState");
     }
 
@@ -39,7 +40,9 @@ public class GameState extends State {
     public void tick() {
         if(planeGame){
             planeGameState.tick();
-        }else if(twov1)
+        }else if(twov1){
+            twov1gamestate.tick();
+        }
         testCount++;
         Player1.tick();
         if (testCount > 477) {
@@ -50,6 +53,8 @@ public class GameState extends State {
     public void render(Graphics graph) {
         if(planeGame){
             planeGameState.render(graph);
+        }else if(twov1){
+            twov1gamestate.render(graph);
         }
         Player1.render(graph);
     }

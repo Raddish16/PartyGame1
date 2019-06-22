@@ -38,6 +38,9 @@ public class Twov1GameState extends State{
         g.setColor(java.awt.Color.blue);
         g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
         g.setColor(java.awt.Color.black);
-        g.fillRect(0,handler.getHeight() - 700, handler.getWidth(), 200);
+        g.fillRect(0,handler.getHeight() - 200, handler.getWidth(), 200);
+        pupMaster.render(g);
+        play1.render(g);
+        play2.render(g);
     }
 }

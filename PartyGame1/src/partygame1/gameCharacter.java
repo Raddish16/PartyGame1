@@ -17,18 +17,20 @@ public class gameCharacter extends Creature {
 
     private String charName;
     private ArrayList<BufferedImage> charImage;
+    private BufferedImage first;
     private int count;
 
     public gameCharacter(Handler handler, float x, float y, int width, int height, String charName) {
         super(handler, x, y, width, height);
         this.charName = charName;
         if(charName.equalsIgnoreCase("Puppet")){
-            charImage = Assets.getPuppet();
+            charImage = Assets.puppet;
         }else if(charName.equalsIgnoreCase("mower")){
-            charImage = Assets.getMower();
+            charImage = Assets.mower;
         }else if(charName.equalsIgnoreCase("Fisher") || charName.equalsIgnoreCase("Fisherman")){
-            charImage = Assets.getFisher();
+            charImage = Assets.fisher;
         }
+        //first = charImage.get(0);
     }
     
     public void tick() {
@@ -39,6 +41,6 @@ public class gameCharacter extends Creature {
     }
 
     public void render(Graphics g) {
-        g.drawImage(charImage.get(count%charImage.size()), (int) x, (int) y, 32, 32, null);
+        g.drawImage(Assets.mouse.get(0), (int) x, (int) y, 32, 32, null);
     }
 }
