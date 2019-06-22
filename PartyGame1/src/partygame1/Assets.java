@@ -15,36 +15,50 @@ import java.util.ArrayList;
 public class Assets {
 
     private static final int width = 32, height = 32;
-    public static SpriteSheet mouseSheet, startSheet, bomberSheet, planeSheet, bRobotSheet, turretSheet;
-    public static ArrayList<BufferedImage> mouse, madmouseR, madmouseL, normouseR, normouseL, bomber, plane, bRobot, greenMonster,turret;//easier to iterate through
+    public static SpriteSheet mouseSheet, startSheet, bomberSheet, planeSheet, bRobotSheet, turretSheet, pupSheet, mowSheet, fishSheet;
+    public static ArrayList<BufferedImage> mouse, madmouseR, madmouseL, normouseR, normouseL, bomber, plane, bRobot, greenMonster, turret, puppet, mower, fisher;//easier to iterate through
+
+    
     public static BufferedImage[][] mouse2;//easier to reference
     public static BufferedImage[] startBtn;
     public static BufferedImage MenuTitle;
+    
 
     public static void init() {
         mouseSheet = new SpriteSheet(imageLoader.loadImage("/textures/Mouse updated.png"));
         startSheet = new SpriteSheet(imageLoader.loadImage("/textures/Start Button.png"));
+
         bomberSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberSheet.png"));
         planeSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniPlaneSheet.png"));
         bRobotSheet = new SpriteSheet(imageLoader.loadImage("/textures/robotSheet.png"));
         turretSheet = new SpriteSheet(imageLoader.loadImage("/textures/miniBomberTurretSheet.png"));
-        
+
+        pupSheet = new SpriteSheet(imageLoader.loadImage("/textures/Puppet Master.png"));
+        mowSheet = new SpriteSheet(imageLoader.loadImage("/textures/Matt the Mower King.png"));
+        fishSheet = new SpriteSheet(imageLoader.loadImage("/textures/Fisherman Frank.png"));
+
         MenuTitle = imageLoader.loadImage("/textures/Menu Title.png");
-        
+
         mouse = new ArrayList<BufferedImage>();
         madmouseR = new ArrayList<BufferedImage>();
         normouseR = new ArrayList<BufferedImage>();
         madmouseL = new ArrayList<BufferedImage>();
         normouseL = new ArrayList<BufferedImage>();
+
         turret = new ArrayList<>();
-        
+
+        puppet = new ArrayList<BufferedImage>();
+        mower = new ArrayList<BufferedImage>();
+        fisher = new ArrayList<BufferedImage>();
+
         greenMonster = new ArrayList<BufferedImage>();
-        
+
         startBtn = new BufferedImage[6];
-        for(int x = 0; x < 6; x++){
-            startBtn[x] = startSheet.crop(0, 34*x, 130, 32);
+
+        for (int x = 0; x < 6; x++) {
+            startBtn[x] = startSheet.crop(0, 34 * x, 130, 32);
         }
-        
+
         for (int y = 0; y < 156; y += 26) {
             for (int x = 0; x < 130; x += 26) {
                 mouse.add(mouseSheet.crop(x, y, 26, 26));
@@ -63,15 +77,16 @@ public class Assets {
             madmouseL.add(mouse.get(y));
         }
 
-        //I accidentally repeated the same thing you did
-        /*BufferedImage[] mouse1 = new BufferedImage[16];
-        for (int x = 0; x < 4; x++) {
-            for (int y = 0; y < 4; y++) {
-                mouse1[4*x + y] = sheet.crop(26*x, 26*y, 26, 26);
-            }
-        }*/
-        
-        
+        for (int y = 0; y < 12; y++) {
+            fisher.add(fishSheet.crop(0, y * 50, 50, 50));
+        }
+        for (int y = 0; y < 864 / 32; y++) {
+            mower.add(mowSheet.crop(0, y * 32, 32, 32));
+        }
+        for (int y = 0; y < 5; y++) {
+            puppet.add(pupSheet.crop(0, y * 96, 32, 96));
+        }
+
         mouse2 = new BufferedImage[4][4];
         for (int c = 0; c < mouse2[0].length; c++) {
             for (int r = 0; r < mouse2.length; r++) {
@@ -89,25 +104,27 @@ public class Assets {
             }
         }
         bRobot = new ArrayList<>();
-        for(int y = 0; y<96;y+=32){
-            for(int x = 0; x<96;x+=32){
+        for (int y = 0; y < 96; y += 32) {
+            for (int x = 0; x < 96; x += 32) {
                 bRobot.add(bRobotSheet.crop(x, y, width, height));
             }
-        }for(int y = 0; y<96;y+=32){
-            for(int x = 0; x<96;x+=32){
+        }
+        for (int y = 0; y < 96; y += 32) {
+            for (int x = 0; x < 96; x += 32) {
                 turret.add(turretSheet.crop(x, y, width, height));
             }
         }
-        
     }
-    /*public BufferedImage[] retrieve(String charName){
-        if(charName.equals("Puppet Master")){
-            return;
-        }else if(charName.equals("Vigilante")){
-            return;
-        }else if(charName.equals("Banjo")){
-            return;
-        }
-        return null;
-    }*/
+
+    public static ArrayList<BufferedImage> getPuppet() {
+        return puppet;
+    }
+
+    public static ArrayList<BufferedImage> getMower() {
+        return mower;
+    }
+    
+    public static ArrayList<BufferedImage> getFisher() {
+        return fisher;
+    }
 }

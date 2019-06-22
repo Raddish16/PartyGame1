@@ -20,9 +20,9 @@ public class Twov1GameState extends State{
     public Twov1GameState(Handler handler) {
         super(handler);
         pupMaster = new gameCharacter(handler, handler.getWidth() - 200, handler.getHeight() - 700, 64, 64, "Puppet Master");
-        play1 = new gameCharacter(handler, handler.getWidth() + 100, handler.getHeight() - 700, 32, 32, handler.getPlay1Name());
-        play2 = new gameCharacter(handler, handler.getWidth() + 150, handler.getHeight() - 700, 32, 32, handler.getPlay2Name());
-        
+        play1 = new gameCharacter(handler, handler.getWidth() + 100, handler.getHeight() - 700, 32, 32, "Fisherman");
+        play2 = new gameCharacter(handler, handler.getWidth() + 150, handler.getHeight() - 700, 32, 32, "mower");
+        handler.setName("Twov1GameState");
     }
 
     @Override
@@ -35,6 +35,9 @@ public class Twov1GameState extends State{
 
     @Override
     public void render(Graphics g) {
-        g.drawRect(0, 0, handler.getWidth(), 100);
+        g.setColor(java.awt.Color.blue);
+        g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
+        g.setColor(java.awt.Color.black);
+        g.fillRect(0,handler.getHeight() - 700, handler.getWidth(), 200);
     }
 }

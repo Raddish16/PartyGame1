@@ -18,8 +18,8 @@ public class GameState extends State {
     private SpriteSheet sheet;
     private ArrayList<BufferedImage> testMouse;
     private Player Player1;
-    private boolean planeGame;
-    private State planeGameState;
+    private boolean planeGame, twov1;
+    private State planeGameState, twov1gamestate;
     private Handler handler;
 
     public GameState(Handler handler) {
@@ -30,6 +30,7 @@ public class GameState extends State {
         this.handler = handler;
         planeGameState = new PlaneGameState(this.handler);
         planeGame = true;
+        twov1gamestate = new Twov1GameState(this.handler);
         handler.setName("gameState");
     }
 
@@ -38,7 +39,7 @@ public class GameState extends State {
     public void tick() {
         if(planeGame){
             planeGameState.tick();
-        }
+        }else if(twov1)
         testCount++;
         Player1.tick();
         if (testCount > 477) {
