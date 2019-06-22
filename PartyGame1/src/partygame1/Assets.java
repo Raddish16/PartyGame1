@@ -117,7 +117,7 @@ public class Assets {
     }
 
     public static ArrayList<BufferedImage> getPuppet() {
-        return puppet;//these probably arent needed if you are just trying to acess the arraylist, could just do Assets.puppet instead
+        return puppet;//these probably arent needed if you are just trying to acess the arraylist, could just do Assets.puppet instead of Assets.getPuppet()
     }
 
     public static ArrayList<BufferedImage> getMower() {
