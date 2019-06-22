@@ -20,8 +20,7 @@ public class PlaneGameState extends State {
     private ArrayList<Plane> planeList;
     private ArrayList<PlaneGameTerrain> terrainList;
     private int planeNumber;//will hold the number of planes onscreen, will be scaled with time
-    private Plane ppp;
-    private Bullet bbb;
+    
 
     public PlaneGameState(Handler handler) {
         super(handler);
@@ -36,13 +35,7 @@ public class PlaneGameState extends State {
         handler.setName("PlaneGameState");
         terrainSpawn();
         spawn();
-        ppp = new Plane(handler, 500, 500, 64, 64);
-        ppp.setxMove(0);
-        ppp.setyMove(0);
-
-        bbb = new Bullet(handler, 600, 500, 64, 64);
-        bbb.setxMove(0);
-        bbb.setyMove(0);
+        
     }
 
     public void terrainSpawn() {
@@ -86,20 +79,26 @@ public class PlaneGameState extends State {
                 p.setX((int) (Math.random() * handler.getWidth()));
                 p.setY(-30);
                 p.resetCount();
-                System.out.println("ugh");
+                System.out.println("respawning plane enemy");
             }
+            
+
+        }for (Plane p : planeList) {
             for (Bomber b : bombers) {
-                for (Bullet bu : (b.getBullets())) {
-                    if (bu.getBounds().intersects(p.getBounds())) {
-                        planeList.remove(planeList.indexOf(p));
-                        System.out.println("hit");
+                    for (Bullet bu : (b.getBullets())) {
+                        if (bu.getBounds().intersects(p.getBounds())) {
+                            planeList.remove(planeList.indexOf(p));
+                            System.out.println("hit");
+                        }
                     }
                 }
+        }for (Plane p : planeList) {
+            for(Bullet b:(bombers.get(0).getBullets())){
+                if (b.getBounds().intersects(p.getBounds()))
+                        System.out.println("hit");
             }
-
         }
     }
-
     @Override
     public void render(Graphics g) {
         g.setColor(new Color(113, 204, 65));
@@ -113,8 +112,7 @@ public class PlaneGameState extends State {
         for (Plane p : planeList) {
             p.render(g);
         }
-        ppp.render(g);
-        bbb.render(g);
+        
 
     }
 
