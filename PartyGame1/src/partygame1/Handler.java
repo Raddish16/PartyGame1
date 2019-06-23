@@ -5,6 +5,8 @@
  */
 package partygame1;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author brendanwilhelm
@@ -14,6 +16,20 @@ public class Handler {
     private Game game;
     private String stateName = "";
     private String play1, play2;
+    private ArrayList<gameCharacter> charList;
+    
+    public Handler(Game game) {
+        this.game = game;
+        charList = new ArrayList<gameCharacter>();
+    }
+
+    public ArrayList<gameCharacter> getCharList() {
+        return charList;
+    }
+
+    public void addChar(gameCharacter newChar) {
+        charList.add(newChar);
+    }
 
     public String getPlay1Name() {
         return play1;
@@ -32,10 +48,7 @@ public class Handler {
     }
 
     // until needed private World world;
-    public Handler(Game game) {
-        this.game = game;
-        
-    }
+    
 
     public int getWidth() {
         return game.getWidth();

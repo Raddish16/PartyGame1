@@ -19,9 +19,9 @@ public class Twov1GameState extends State{
 
     public Twov1GameState(Handler handler) {
         super(handler);
-        pupMaster = new gameCharacter(handler, handler.getWidth() - 200, handler.getHeight() - 200, 64, 64, "Puppet");
-        play1 = new gameCharacter(handler, 50, handler.getHeight() - 200, 32, 32, "Fisherman");
-        play2 = new gameCharacter(handler, 450, handler.getHeight() - 200, 32, 32, "mower");
+        pupMaster = new Puppet(handler, handler.getWidth() - 200, handler.getHeight() - 200, 64, 64);
+        play1 = new Fisher(handler, 50, handler.getHeight() - 200, 32, 32);
+        play2 = new Mower(handler, 450, handler.getHeight() - 200, 32, 32);
         handler.setName("Twov1GameState");
     }
 
