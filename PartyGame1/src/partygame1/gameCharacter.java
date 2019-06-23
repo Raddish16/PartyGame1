@@ -18,29 +18,47 @@ public class gameCharacter extends Creature {
     private String charName;
     private ArrayList<BufferedImage> charImage;
     private BufferedImage first;
-    private int count;
+    private double count, frames;
+    private int charNum;
+    private static int charCount;
 
     public gameCharacter(Handler handler, float x, float y, int width, int height, String charName) {
         super(handler, x, y, width, height);
         this.charName = charName;
-        if(charName.equalsIgnoreCase("Puppet")){
-            charImage = Assets.puppet;
-        }else if(charName.equalsIgnoreCase("mower")){
-            charImage = Assets.mower;
-        }else if(charName.equalsIgnoreCase("Fisher") || charName.equalsIgnoreCase("Fisherman")){
-            charImage = Assets.fisher;
-        }
-        //first = charImage.get(0);
+        charCount++;
+        charNum = charCount;
     }
-    
+
     public void tick() {
-        count++;
-        xMove = 1;//Add different controls based on which player they are
-        yMove = 1;
+        count+= .2;
+        if (handler.getGame().getKeyManager().up) {
+            yMove = -3;
+        }
+        else if (handler.getGame().getKeyManager().down) {
+            yMove = 3;
+        }else{
+            yMove = 0;
+        }
+        if (handler.getGame().getKeyManager().left) {
+            xMove = -3;
+        }
+        else if (handler.getGame().getKeyManager().right) {
+            xMove = 3;
+        }else{
+            xMove = 0;
+        }
+
         move();
     }
 
     public void render(Graphics g) {
-        g.drawImage(Assets.mouse.get(0), (int) x, (int) y, 32, 32, null);
+        if (charName.equalsIgnoreCase("Puppet")) {
+            g.drawImage(Assets.puppet.get((int)(.5*count % 2) + 3), (int) x, (int) y, 32*5, 96*5, null);
+        } else if (charName.equalsIgnoreCase("mower")) {
+            g.drawImage(Assets.mower.get((int)(count % Assets.mower.size())), (int) x, (int) y, 30*5, 30*5, null);
+        } else if (charName.equalsIgnoreCase("Fisher") || charName.equalsIgnoreCase("Fisherman")) {
+            g.drawImage(Assets.fisher.get((int)(count%Assets.fisher.size())), (int) x, (int) y, 32*6, 32*6, null);
+        }
+
     }
 }
