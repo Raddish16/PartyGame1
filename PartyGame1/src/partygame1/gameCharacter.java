@@ -21,12 +21,15 @@ public class gameCharacter extends Creature {
     protected double count, frames;
     private int charNum;
     private static int charCount;
+    protected int XP;
+    
 
     public gameCharacter(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         
         charCount++;
         charNum = charCount;
+        XP = 0;
     }
 
     public void tick() {
@@ -53,5 +56,23 @@ public class gameCharacter extends Creature {
 
     public void render(Graphics g) {        
 
+    }
+    public void levelUp(){
+        if(XP > getReqXP()){
+            level++;
+        }
+        
+    }
+    public int getReqXP(){
+        if(level == 1){
+            return 100;
+        }else if(level == 2){
+            return 200;
+        }else if(level == 3){
+            return 300;
+        }else if(level ==4){
+            return 400;
+        }
+        return 0;
     }
 }

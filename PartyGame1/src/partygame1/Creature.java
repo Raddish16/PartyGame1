@@ -15,7 +15,7 @@ public class Creature extends Entity {
     public static final float defaultSpeed = 3.0f;
     public static final int defaultWidth = 32;
     public static final int defaultHeight = 32;
-    protected int health;
+    protected int health, level;
     protected float speed;
     protected float xMove,yMove;
 
@@ -25,6 +25,7 @@ public class Creature extends Entity {
         speed = defaultSpeed;
         xMove = 0;
         yMove = 0;
+        level = 1;
     }
 
     public float getxMove() {
@@ -62,4 +63,5 @@ public class Creature extends Entity {
     public void setSpeed(float speed) {
         this.speed = speed;
     }
+    
 }

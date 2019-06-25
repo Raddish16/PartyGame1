@@ -12,9 +12,12 @@ import java.awt.Graphics;
  * @author brendanwilhelm
  */
 public class Mower extends gameCharacter {
-
+    
+    
+    
     public Mower(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
+        
     }
 
     public void tick() {

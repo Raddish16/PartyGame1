@@ -34,7 +34,7 @@ public class Puppet extends gameCharacter {
         } else if (handler.getKeyManager().right) {
             g.drawImage(Assets.puppet.get((int) (.5 * count % 2) + 3), (int) x, (int) y, 32 * 5, 96 * 5, null);
         } else {
-            g.drawImage(Assets.puppet.get(0), (int) x, (int) y, 32 * 5, 96 * 5, null);
+            g.drawImage(Assets.puppet.get(2), (int) x, (int) y, 32 * 5, 96 * 5, null);
 
         }
     }
