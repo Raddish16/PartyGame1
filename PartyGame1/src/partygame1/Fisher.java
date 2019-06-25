@@ -22,7 +22,7 @@ public class Fisher extends gameCharacter {
     }
 
     public void render(Graphics g) {
-        
+
         /*if (handler.getKeyManager().up ) {
             g.drawImage(Assets.madmouseR.get(mouse), (int) x, (int) y, 70, 70, null);
         }
@@ -30,11 +30,11 @@ public class Fisher extends gameCharacter {
             g.drawImage(Assets.madmouseL.get(mouse), (int) x, (int) y, 70, 70, null);
         }*/
         if (handler.getKeyManager().left) {
-        g.drawImage(Assets.fisher.get((int) (count % Assets.fisher.size())), (int) x, (int) y, 32 * 6, 32 * 6, null);
-
-        }
-        else if (handler.getKeyManager().right) {
-        g.drawImage(Assets.fisher.get((int) (count % Assets.fisher.size())), (int) x, (int) y, 32 * 6, 32 * 6, null);
+            g.drawImage(Assets.fisher.get((int) (count % Assets.fisher.size())), (int) x, (int) y, 32 * 6, 32 * 6, null);
+        } else if (handler.getKeyManager().right) {
+            g.drawImage(Assets.fisher.get((int) (count % Assets.fisher.size())), (int) x, (int) y, 32 * 6, 32 * 6, null);
+        } else {
+            g.drawImage(Assets.fisher.get(0), (int) x, (int) y, 32 * 6, 32 * 6, null);
 
         }
     }

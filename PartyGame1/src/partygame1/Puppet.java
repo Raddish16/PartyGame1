@@ -31,11 +31,11 @@ public class Puppet extends gameCharacter {
         }*/
         if (handler.getKeyManager().left) {
             g.drawImage(Assets.puppet.get((int) (.5 * count % 2) + 3), (int) x, (int) y, -32 * 5, 96 * 5, null);
-            
-        }
-        if (handler.getKeyManager().right) {
+        } else if (handler.getKeyManager().right) {
             g.drawImage(Assets.puppet.get((int) (.5 * count % 2) + 3), (int) x, (int) y, 32 * 5, 96 * 5, null);
-            
+        } else {
+            g.drawImage(Assets.puppet.get(0), (int) x, (int) y, 32 * 5, 96 * 5, null);
+
         }
     }
 

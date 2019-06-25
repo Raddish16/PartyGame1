@@ -29,11 +29,12 @@ public class Mower extends gameCharacter {
             g.drawImage(Assets.madmouseL.get(mouse), (int) x, (int) y, 70, 70, null);
         }*/
         if (handler.getKeyManager().left) {
-        g.drawImage(Assets.mower.get((int) (count % Assets.mower.size())), (int) x, (int) y, -30 * 5, 30 * 5, null);
+            g.drawImage(Assets.mower.get((int) (count % Assets.mower.size())), (int) x, (int) y, -30 * 5, 30 * 5, null);
+        } else if (handler.getKeyManager().right) {
+            g.drawImage(Assets.mower.get((int) (count % Assets.mower.size())), (int) x, (int) y, 30 * 5, 30 * 5, null);
 
-        }
-        if (handler.getKeyManager().right) {
-        g.drawImage(Assets.mower.get((int) (count % Assets.mower.size())), (int) x, (int) y, 30 * 5, 30 * 5, null);
+        } else {
+            g.drawImage(Assets.mower.get(0), (int) x, (int) y, 30 * 5, 30 * 5, null);
 
         }
     }
