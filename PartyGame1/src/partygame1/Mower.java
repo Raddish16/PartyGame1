@@ -16,7 +16,7 @@ public class Mower extends gameCharacter {
     private int imgheight = 32, imgwidth = 32;
     
     public Mower(Handler handler, float x, float y, int width, int height) {
-        super(handler, x, y, width, height);
+        super(handler, x, y - 30*5 + 10, width, height);
         
     }
 
@@ -32,7 +32,7 @@ public class Mower extends gameCharacter {
             g.drawImage(Assets.madmouseL.get(mouse), (int) x, (int) y, 70, 70, null);
         }*/
         if (handler.getKeyManager().left) {
-            g.drawImage(Assets.mower.get((int) (count % Assets.mower.size())), (int) x, (int) y, -30 * 5, 30 * 5, null);
+            g.drawImage(Assets.mower.get((int) (count % Assets.mower.size())), (int) x + imgwidth + 75, (int) y, -30 * 5, 30 * 5, null);
         } else if (handler.getKeyManager().right) {
             g.drawImage(Assets.mower.get((int) (count % Assets.mower.size())), (int) x, (int) y, 30 * 5, 30 * 5, null);
 

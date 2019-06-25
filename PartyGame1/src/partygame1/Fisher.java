@@ -16,7 +16,7 @@ public class Fisher extends gameCharacter {
     private int imgheight = 50, imgwidth = 50;
     
     public Fisher(Handler handler, float x, float y, int width, int height) {
-        super(handler, x, y, width, height);
+        super(handler, x, y - 32*6 + 20, width, height);
     }
 
     public void tick() {
@@ -32,7 +32,7 @@ public class Fisher extends gameCharacter {
             g.drawImage(Assets.madmouseL.get(mouse), (int) x, (int) y, 70, 70, null);
         }*/
         if (handler.getKeyManager().left) {
-            g.drawImage(Assets.fisher.get((int) (count % Assets.fisher.size())), (int) x, (int) y, 32 * 6, 32 * 6, null);
+            g.drawImage(Assets.fisher.get((int) (count % Assets.fisher.size())), (int) x + imgwidth + 120, (int) y, -32 * 6, 32 * 6, null);
         } else if (handler.getKeyManager().right) {
             g.drawImage(Assets.fisher.get((int) (count % Assets.fisher.size())), (int) x, (int) y, 32 * 6, 32 * 6, null);
         } else {
