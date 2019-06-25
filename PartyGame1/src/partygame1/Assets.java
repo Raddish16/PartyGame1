@@ -17,7 +17,31 @@ public class Assets {
     private static final int width = 32, height = 32;
     public static SpriteSheet mouseSheet, startSheet, bomberSheet, planeSheet, bRobotSheet, turretSheet, pupSheet, mowSheet, fishSheet;
     public static ArrayList<BufferedImage> mouse, madmouseR, madmouseL, normouseR, normouseL, bomber, plane, bRobot, greenMonster, turret, puppet, mower, fisher;//easier to iterate through
+    public int pheight = 96, pwidth = 32, fheight = 50, fwidth = 50, mheight = 32, mwidth = 32;
 
+    public int getPheight() {
+        return pheight;
+    }
+
+    public int getPwidth() {
+        return pwidth;
+    }
+
+    public int getFheight() {
+        return fheight;
+    }
+
+    public int getFwidth() {
+        return fwidth;
+    }
+
+    public int getMheight() {
+        return mheight;
+    }
+
+    public int getMwidth() {
+        return mwidth;
+    }
     
     public static BufferedImage[][] mouse2;//easier to reference
     public static BufferedImage[] startBtn;
@@ -80,6 +104,7 @@ public class Assets {
         for (int y = 0; y < 12; y++) {
             fisher.add(fishSheet.crop(0, y * 50, 50, 50));
         }
+        
         for (int y = 0; y < 864 / 32; y++) {
             mower.add(mowSheet.crop(0, y * 32, 32, 32));
         }

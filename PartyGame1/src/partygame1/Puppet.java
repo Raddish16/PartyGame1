@@ -12,9 +12,11 @@ import java.awt.Graphics;
  * @author brendanwilhelm
  */
 public class Puppet extends gameCharacter {
+    private int imgheight = 96, imgwidth = 32;
 
     public Puppet(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
+        
     }
 
     public void tick() {

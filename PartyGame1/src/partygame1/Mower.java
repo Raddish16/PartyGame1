@@ -13,7 +13,7 @@ import java.awt.Graphics;
  */
 public class Mower extends gameCharacter {
     
-    
+    private int imgheight = 32, imgwidth = 32;
     
     public Mower(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);

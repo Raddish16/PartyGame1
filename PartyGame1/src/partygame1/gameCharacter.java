@@ -22,11 +22,12 @@ public class gameCharacter extends Creature {
     private int charNum;
     private static int charCount;
     protected int XP;
-    
+    private int imgheight, imgwidth;
 
     public gameCharacter(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
-        
+        this.imgheight = imgheight;
+        this.imgwidth = imgwidth;
         charCount++;
         charNum = charCount;
         XP = 0;

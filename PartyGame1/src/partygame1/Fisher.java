@@ -13,6 +13,8 @@ import java.awt.Graphics;
  */
 public class Fisher extends gameCharacter {
 
+    private int imgheight = 50, imgwidth = 50;
+    
     public Fisher(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
     }
