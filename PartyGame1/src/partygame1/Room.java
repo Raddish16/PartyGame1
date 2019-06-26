@@ -34,10 +34,10 @@ public class Room {
                 } else if (room[r-1][c] == 1 && room [r][c] == 0) {
                     if((int)(Math.random()*6) == 0){
                         room[r][c] = 3;
-                    }else if((int)(Math.random()*2) == 0){
+                    }else if((int)(Math.random()*4) == 0){
                         room[r][c] = 2;
                     }
-                } else if () {
+                } /*else if () {
                     room[r][c] =;
                 } else if () {
                     room[r][c] =;
@@ -47,7 +47,7 @@ public class Room {
                     room[r][c] =;
                 } else {
                     room[r][c] = 0;
-                }
+                }*/
             }
         }
         //Entrance and exit, entrance on left, exit on right
@@ -55,6 +55,12 @@ public class Room {
         int Ex = (int) (Math.random() * height);
         room[Ent][0] = 9;
         room[Ex][width - 1] = 9;
+        if((int)(Math.random()*4) == 0){
+            room[height - 1][(int)(width/2)] = 9;
+        }
+        if((int)(Math.random()*4) == 0){
+            room[0][(int)(width/2)] = 9;
+        }
     }
 
     public int getWidth() {
