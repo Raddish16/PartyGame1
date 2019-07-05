@@ -51,7 +51,10 @@ public class gameCharacter extends Creature {
         }else{
             xMove = 0;
         }
-
+        if(y > 600){
+            yMove = -10;
+        }
+        
         move();
     }
 
