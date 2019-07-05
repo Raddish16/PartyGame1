@@ -19,7 +19,7 @@ public class PlaneGameState extends State {
     private ArrayList<Bomber> bombers;
     private ArrayList<Plane> planeList;
     private ArrayList<PlaneGameTerrain> terrainList;
-    public static ArrayList<Bullet> bullets;
+    public static ArrayList<Bullet> bullets,enemyBullets;
     private int planeNumber;//will hold the number of planes onscreen, will be scaled with time
 
     public PlaneGameState(Handler handler) {
@@ -30,6 +30,7 @@ public class PlaneGameState extends State {
         terrainList = new ArrayList<>();
         bombers = new ArrayList<>();
         bullets = new ArrayList<>();
+        enemyBullets = new ArrayList<>();
         bombers.add(new Bomber(this.handler, 500, 500, 32, 32));
 
         terrainList.add(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
@@ -68,6 +69,9 @@ public class PlaneGameState extends State {
         for (Bullet b : bullets) {
             b.tick();
         }
+        for (Bullet b : enemyBullets) {
+            b.tick();
+        }
 
         for (PlaneGameTerrain t : terrainList) {
             t.tick();
@@ -83,6 +87,7 @@ public class PlaneGameState extends State {
                 p.setX((int) (Math.random() * handler.getWidth()));
                 p.setY(-30);
                 p.resetCount();
+                p.setDeath(false);
                 System.out.println("respawning plane enemy");
             }
 
@@ -91,6 +96,7 @@ public class PlaneGameState extends State {
         for (Plane p : planeList) {
             for (Bullet b : bullets) {
                 if (p.getBounds().intersects(b.getBounds())) {
+                    p.setDeath(true);
                     removedPlanes.add(p);
                     System.out.println("hit");
                 }
@@ -110,6 +116,9 @@ public class PlaneGameState extends State {
             b.render(g);
         }
         for (Bullet b : bullets) {
+            b.render(g);
+        }
+        for (Bullet b : enemyBullets) {
             b.render(g);
         }
         for (Plane p : planeList) {

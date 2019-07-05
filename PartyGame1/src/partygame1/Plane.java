@@ -22,6 +22,7 @@ public class Plane extends Creature {
     private int fireCount,moveMethod = 0;
     private Rectangle bounds;
     private BufferedImage currIm;
+    private boolean death;
 
     public Plane(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -33,6 +34,7 @@ public class Plane extends Creature {
         xMove = 0;
         yMove = -1;
         moveMethod = (int) (Math.random() * 4);
+        death = false;
     }
 
     public void move() {
@@ -44,6 +46,9 @@ public class Plane extends Creature {
     public Rectangle getBounds(){
         return bounds;
     }
+    public void setDeath(Boolean d){
+        death = d;
+    }
 
     public void tick() {
         fireCount++;
@@ -51,7 +56,7 @@ public class Plane extends Creature {
             fireCount = 0;
             Bullet bu = new Bullet(handler,x,y,width,height);
             bu.setyMove((int)(2*this.yMove));
-            PlaneGameState.bullets.add(bu);
+            PlaneGameState.enemyBullets.add(bu);
         }
         bounds = new Rectangle((int)x+18,(int)y+16,28,22);
         count += .5;
@@ -81,9 +86,10 @@ public class Plane extends Creature {
     }
 
     public void render(Graphics g) {
-        g.drawImage(currIm, (int) x, (int) y, 64, 64, null);
+        if(!death)
+            g.drawImage(currIm, (int) x, (int) y, 64, 64, null);
         g.setColor(Color.black);
-        g.drawRect((int)x+18,(int)y+16,28,22);
+        g.drawRect((int)x+18,(int)y+20,28,22);
     }
 
 }
