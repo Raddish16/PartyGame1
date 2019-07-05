@@ -27,7 +27,7 @@ public class Bullet extends Creature {
         bullet = Assets.turret.get(8);
         speed =5;
         xMove = 0;
-        yMove = 0;
+        yMove = 5;
     }
     
     public Rectangle getBounds(){
@@ -56,5 +56,8 @@ public class Bullet extends Creature {
 
     public void addyMove(int y) {
         yMove += y;
+    }
+    public void setyMove(int y){
+        yMove = y;
     }
 }

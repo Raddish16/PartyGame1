@@ -19,7 +19,7 @@ public class Plane extends Creature {
 
     private Handler handler;
     private double count = 0;
-    private int moveMethod = 0;
+    private int fireCount,moveMethod = 0;
     private Rectangle bounds;
     private BufferedImage currIm;
 
@@ -29,6 +29,7 @@ public class Plane extends Creature {
         bounds = new Rectangle((int)x+18,(int)y+16,28,22);
         Assets.init();
         currIm = ImageRotate.newRotateImage(180, Assets.plane.get(0));
+        fireCount = 0;
         xMove = 0;
         yMove = -1;
         moveMethod = (int) (Math.random() * 4);
@@ -45,6 +46,13 @@ public class Plane extends Creature {
     }
 
     public void tick() {
+        fireCount++;
+        if(fireCount>60){
+            fireCount = 0;
+            Bullet bu = new Bullet(handler,x,y,width,height);
+            bu.setyMove((int)(2*this.yMove));
+            PlaneGameState.bullets.add(bu);
+        }
         bounds = new Rectangle((int)x+18,(int)y+16,28,22);
         count += .5;
         /*if (moveMethod == 1) {
