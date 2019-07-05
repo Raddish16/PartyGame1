@@ -8,6 +8,7 @@ package partygame1;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import java.awt.image.BufferedImage;
 import static java.lang.Math.sin;
 
 /**
@@ -20,12 +21,14 @@ public class Plane extends Creature {
     private double count = 0;
     private int moveMethod = 0;
     private Rectangle bounds;
+    private BufferedImage currIm;
 
     public Plane(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         this.handler = handler;
         bounds = new Rectangle((int)x+18,(int)y+16,28,22);
         Assets.init();
+        currIm = ImageRotate.newRotateImage(180, Assets.plane.get(0));
         xMove = 0;
         yMove = -1;
         moveMethod = (int) (Math.random() * 4);
@@ -42,8 +45,9 @@ public class Plane extends Creature {
     }
 
     public void tick() {
+        bounds = new Rectangle((int)x+18,(int)y+16,28,22);
         count += .5;
-        if (moveMethod == 1) {
+        /*if (moveMethod == 1) {
             
             xMove = -(int) (5 * sin(count)) + (int) (.25 * count);
             yMove = -(int) (5 * sin(count)) - (int) (.25 * count);
@@ -62,12 +66,14 @@ public class Plane extends Creature {
             xMove = 4;
             yMove = -4;
 
-        }
+        }*/
+        yMove = 4;
+        
         move();
     }
 
     public void render(Graphics g) {
-        g.drawImage(Assets.plane.get(0), (int) x, (int) y, 64, 64, null);
+        g.drawImage(currIm, (int) x, (int) y, 64, 64, null);
         g.setColor(Color.black);
         g.drawRect((int)x+18,(int)y+16,28,22);
     }

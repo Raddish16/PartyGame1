@@ -16,4 +16,11 @@ public class ImageRotate {
     public static BufferedImage rotate(double degrees, BufferedImage I){
        return null;
     }
+    public static BufferedImage newRotateImage(double degrees, BufferedImage I) {
+        BufferedImage newI = new BufferedImage(I.getWidth(), I.getHeight(), BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g2 = (Graphics2D) newI.getGraphics();
+        g2.rotate(Math.toRadians(degrees), I.getWidth() / 2, I.getHeight() / 2);
+        g2.drawImage(I, 0, 0, null);
+        return newI;
+    }
 }

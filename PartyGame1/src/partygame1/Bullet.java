@@ -27,7 +27,7 @@ public class Bullet extends Creature {
         bullet = Assets.turret.get(8);
         speed =5;
         xMove = 0;
-        yMove = -speed;
+        yMove = 0;
     }
     
     public Rectangle getBounds(){
@@ -39,6 +39,7 @@ public class Bullet extends Creature {
     }
 
     public void tick() {
+        bounds = new Rectangle((int)x+27, (int)y+18, 9, 8);
         move();
     }
 
@@ -47,6 +48,7 @@ public class Bullet extends Creature {
         g.setColor(Color.black);
         g.drawRect((int)x+27, (int)y+18, 9, 8);
     }
+    
 
     public void addxMove(int x) {
         xMove += x;

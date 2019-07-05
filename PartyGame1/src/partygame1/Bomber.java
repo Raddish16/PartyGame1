@@ -86,6 +86,7 @@ public class Bomber extends Creature {
                 Bullet b = new Bullet(handler, (int)x, (int)y, 64, 64);
                 b.setxMove(modX);
                 b.setyMove(modY);
+                PlaneGameState.bullets.add(b);
                 turretBullets.add(b);
                 tickCount = 0;
                 currentTurret = Assets.turret.get(4);
@@ -184,18 +185,18 @@ public class Bomber extends Creature {
         if (xMove == 0 && yMove == (-1) * speed) {
             newCs = cS;
         }
-        for (Bullet b : turretBullets) {
-            b.tick();
-        }
+       // for (Bullet b : turretBullets) {
+       //     b.tick();
+        //}
     }
 
     public void render(Graphics g) {
         
         g.drawImage(cS, (int) x, (int) y, 64, 64, null);
         g.drawImage(currentTurret, (int) x, (int) y, 64, 64, null);
-        for (Bullet b : turretBullets) {
-            b.render(g);
-        }
+       // for (Bullet b : turretBullets) {
+         //   b.render(g);
+         //}
     }
 
 }

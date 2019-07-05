@@ -19,8 +19,8 @@ public class PlaneGameState extends State {
     private ArrayList<Bomber> bombers;
     private ArrayList<Plane> planeList;
     private ArrayList<PlaneGameTerrain> terrainList;
+    public static ArrayList<Bullet> bullets;
     private int planeNumber;//will hold the number of planes onscreen, will be scaled with time
-    
 
     public PlaneGameState(Handler handler) {
         super(handler);
@@ -29,13 +29,14 @@ public class PlaneGameState extends State {
         planeList = new ArrayList<Plane>();
         terrainList = new ArrayList<>();
         bombers = new ArrayList<>();
+        bullets = new ArrayList<>();
         bombers.add(new Bomber(this.handler, 500, 500, 32, 32));
 
         terrainList.add(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
         handler.setName("PlaneGameState");
         terrainSpawn();
         spawn();
-        
+
     }
 
     public void terrainSpawn() {
@@ -64,6 +65,9 @@ public class PlaneGameState extends State {
         for (Bomber b : bombers) {
             b.tick();
         }
+        for (Bullet b : bullets) {
+            b.tick();
+        }
 
         for (PlaneGameTerrain t : terrainList) {
             t.tick();
@@ -81,24 +85,20 @@ public class PlaneGameState extends State {
                 p.resetCount();
                 System.out.println("respawning plane enemy");
             }
-            
 
-        }for (Plane p : planeList) {
-            for (Bomber b : bombers) {
-                    for (Bullet bu : (b.getBullets())) {
-                        if (bu.getBounds().intersects(p.getBounds())) {
-                            planeList.remove(planeList.indexOf(p));
-                            System.out.println("hit");
-                        }
-                    }
+        }
+        ArrayList<Plane>removedPlanes= new ArrayList<>();
+        for (Plane p : planeList) {
+            for (Bullet b : bullets) {
+                if (p.getBounds().intersects(b.getBounds())) {
+                    removedPlanes.add(p);
+                    System.out.println("hit");
                 }
-        }for (Plane p : planeList) {
-            for(Bullet b:(bombers.get(0).getBullets())){
-                if (b.getBounds().intersects(p.getBounds()))
-                        System.out.println("hit");
             }
         }
+
     }
+
     @Override
     public void render(Graphics g) {
         g.setColor(new Color(113, 204, 65));
@@ -109,19 +109,21 @@ public class PlaneGameState extends State {
         for (Bomber b : bombers) {
             b.render(g);
         }
+        for (Bullet b : bullets) {
+            b.render(g);
+        }
         for (Plane p : planeList) {
             p.render(g);
         }
-        
 
     }
 
     public void spawn() {
         for (int x = 0; x < planeNumber; x++) {
             if (Math.random() > .5) {
-                planeList.add(new Plane(this.handler, 0, (int) (Math.random() * 300), 64, 64));
+                planeList.add(new Plane(this.handler, (int)(Math.random() * handler.getWidth()), (int) (Math.random() * handler.getHeight()), 64, 64));
             } else {
-                planeList.add(new Plane(this.handler, 1400, (int) (Math.random() * 300), 64, 64));
+                planeList.add(new Plane(this.handler, (int)(Math.random() * handler.getWidth()), (int) (Math.random() * handler.getHeight()), 64, 64));
             }
 
         }
