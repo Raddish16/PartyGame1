@@ -20,8 +20,8 @@ public class PlaneGameState extends State {
     private ArrayList<Plane> planeList;
     private ArrayList<PlaneGameTerrain> terrainList;
     public static ArrayList<Bullet> bullets,enemyBullets;
-    private int planeNumber;//will hold the number of planes onscreen, will be scaled with time
-
+    private int planeNumber, p1Score;//will hold the number of planes onscreen, will be scaled with time
+    private ArrayList<Integer>scores;
     public PlaneGameState(Handler handler) {
         super(handler);
         this.handler = handler;
@@ -31,7 +31,8 @@ public class PlaneGameState extends State {
         bombers = new ArrayList<>();
         bullets = new ArrayList<>();
         enemyBullets = new ArrayList<>();
-        bombers.add(new Bomber(this.handler, 500, 500, 32, 32));
+        
+        bombers.add(new Bomber(this.handler, 500, 500, 64, 64));
 
         terrainList.add(new PlaneGameTerrain(handler, (int) (Math.random() * (handler.getWidth())), 0, 64, 64));
         handler.setName("PlaneGameState");
@@ -92,15 +93,28 @@ public class PlaneGameState extends State {
             }
 
         }
-        ArrayList<Plane>removedPlanes= new ArrayList<>();
+        //checks for hits on enemt planes, increases scores and destroys enemies
         for (Plane p : planeList) {
             for (Bullet b : bullets) {
                 if (p.getBounds().intersects(b.getBounds())) {
+                    if(!p.getDeath())
+                        p1Score++;
                     p.setDeath(true);
-                    removedPlanes.add(p);
                     System.out.println("hit");
+                    
+                    
                 }
             }
+        }
+        //does same but for player hit detection
+        for(Bomber b :bombers){
+           for(Bullet bu: enemyBullets){
+               if(b.getBounds().intersects(bu.getBounds()))
+                   if(!b.getInvuln()){
+                       b.loseHealth();
+                       b.setInvuln(true);
+                   }
+           }
         }
 
     }
@@ -109,6 +123,7 @@ public class PlaneGameState extends State {
     public void render(Graphics g) {
         g.setColor(new Color(113, 204, 65));
         g.fillRect(0, 0, handler.getWidth(), handler.getHeight());
+        
         for (PlaneGameTerrain t : terrainList) {
             t.render(g);
         }
@@ -124,7 +139,7 @@ public class PlaneGameState extends State {
         for (Plane p : planeList) {
             p.render(g);
         }
-
+        g.drawString("P1 Score: "+p1Score, 50, 25);//displays p1 score
     }
 
     public void spawn() {

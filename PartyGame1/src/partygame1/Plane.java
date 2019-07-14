@@ -49,6 +49,9 @@ public class Plane extends Creature {
     public void setDeath(Boolean d){
         death = d;
     }
+    public boolean getDeath(){
+        return death;
+    }
 
     public void tick() {
         fireCount++;

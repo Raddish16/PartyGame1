@@ -8,6 +8,7 @@ package partygame1;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -17,17 +18,27 @@ import java.util.ArrayList;
  * @author Yasuki Wu
  */
 public class Bomber extends Creature {
-
+    private Animation dmg1,dmg2,dmg3,dmg4,destroyed;
     private Handler handler;
     private int health, rotated, modX, modY, tickCount;
     private BufferedImage cS, newCs, currentTurret;
     private ArrayList<Bullet> turretBullets;
+    private Rectangle bounds;
+    private boolean invuln;
 
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
         speed = 4.5f;
-        health = super.getHealth();
+        health = 5;
         this.handler = handler;
+        bounds = new Rectangle((int)x,(int)y+15,width,height-45);
+        
+        invuln = false;
+        
+        //animations
+        ArrayList<BufferedImage>d1 = new ArrayList<BufferedImage>(Assets.bomber.subList(1, 3));
+        dmg1 = new Animation(500, d1);
+        
         xMove = 0;
         yMove = 0;
         rotated = 0;
@@ -162,15 +173,34 @@ public class Bomber extends Creature {
     public ArrayList<Bullet> getBullets(){
         return turretBullets;
     }
-
+    
+    public Rectangle getBounds(){
+        return bounds;
+    }
+    
+    public void setInvuln(boolean i){
+        invuln = i;
+    }
+    public boolean getInvuln(){
+        return invuln;
+    }
     public void move() {
         super.move();
+    }
+    public void loseHealth(){
+        health--;
     }
 
     public void tick() {
         tickCount++;
         getInput();
         move();
+        dmg1.tick();
+        if(health == 4){
+            cS = dmg1.getCurrentFrame();
+        }
+        
+        //unused code i think
         if (xMove == 0 && yMove == (-1) * speed) {
             newCs = cS;
             rotated = 0;
@@ -192,8 +222,11 @@ public class Bomber extends Creature {
 
     public void render(Graphics g) {
         
-        g.drawImage(cS, (int) x, (int) y, 64, 64, null);
-        g.drawImage(currentTurret, (int) x, (int) y, 64, 64, null);
+        g.drawImage(cS, (int) x, (int) y, width, height, null);
+        g.drawImage(currentTurret, (int) x, (int) y, width, height, null);
+        g.setColor(Color.black);
+        g.drawRect((int)x,(int)y+15,width,height-45);
+        
        // for (Bullet b : turretBullets) {
          //   b.render(g);
          //}

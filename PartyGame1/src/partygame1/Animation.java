@@ -6,6 +6,7 @@
 package partygame1;
 
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  *
@@ -14,10 +15,32 @@ import java.awt.image.BufferedImage;
 public class Animation {
     
     private int speed, index;
-    private BufferedImage frames;
-    public Animation(int s, BufferedImage f){
+    private long lastTime, timer;
+    private ArrayList<BufferedImage> frames;
+    public Animation(int s, ArrayList<BufferedImage> f){
         speed = s;
         frames = f;
+        index = 0;
+        timer = 0;
+        lastTime = System.currentTimeMillis();
+    }
+    
+    
+    public void tick(){
+        timer+= System.currentTimeMillis() - lastTime;
+        lastTime = System.currentTimeMillis();
+        
+        if(timer>speed){
+            index++;
+            timer = 0;
+            if(index>=frames.size())
+                index = 0;
+        }
+    }
+    
+        
+    public BufferedImage getCurrentFrame(){
+        return frames.get(index);
     }
     
 }
