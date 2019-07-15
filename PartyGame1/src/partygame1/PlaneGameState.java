@@ -113,6 +113,7 @@ public class PlaneGameState extends State {
                    if(!b.getInvuln()){
                        b.loseHealth();
                        b.setInvuln(true);
+                       p1Score-=100;
                    }
            }
         }

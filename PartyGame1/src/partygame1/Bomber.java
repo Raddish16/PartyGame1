@@ -195,6 +195,7 @@ public class Bomber extends Creature {
         tickCount++;
         getInput();
         move();
+        bounds = new Rectangle((int)x,(int)y+15,width,height-45);
         dmg1.tick();
         if(health == 4){
             cS = dmg1.getCurrentFrame();
