@@ -20,11 +20,11 @@ import java.util.ArrayList;
 public class Bomber extends Creature {
     private Animation dmg1,dmg2,dmg3,dmg4,destroyed;
     private Handler handler;
-    private int health, rotated, modX, modY, tickCount;
+    private int health, rotated, modX, modY, tickCount, invulnCount, invulnTime;
     private BufferedImage cS, newCs, currentTurret;
     private ArrayList<Bullet> turretBullets;
     private Rectangle bounds;
-    private boolean invuln;
+    private boolean invuln, dead;
 
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -32,12 +32,26 @@ public class Bomber extends Creature {
         health = 5;
         this.handler = handler;
         bounds = new Rectangle((int)x,(int)y+15,width,height-45);
-        
+        invulnTime = 60;
         invuln = false;
+        dead = false;
         
         //animations
+        //1 damage
         ArrayList<BufferedImage>d1 = new ArrayList<BufferedImage>(Assets.bomber.subList(1, 3));
         dmg1 = new Animation(500, d1);
+        //2 damage
+        ArrayList<BufferedImage>d2 = new ArrayList<BufferedImage>(Assets.bomber.subList(3, 5));
+        dmg2 = new Animation(500, d2);
+        //3 damage
+        ArrayList<BufferedImage>d3 = new ArrayList<BufferedImage>(Assets.bomber.subList(5, 7));
+        dmg3 = new Animation(500, d3);
+        //4 damage
+        ArrayList<BufferedImage>d4 = new ArrayList<BufferedImage>(Assets.bomber.subList(7, 9));
+        dmg4 = new Animation(500, d4);
+        //destroyed
+        ArrayList<BufferedImage>d = new ArrayList<BufferedImage>(Assets.bomber.subList(9, 17));
+        destroyed = new Animation(250,d);
         
         xMove = 0;
         yMove = 0;
@@ -45,6 +59,7 @@ public class Bomber extends Creature {
         modX = 0;
         modY = -5;
         tickCount = 60;
+        invulnCount = 0;
         Assets.init();
         cS = Assets.bomber.get(0);
         turretBullets = new ArrayList<>();
@@ -193,12 +208,36 @@ public class Bomber extends Creature {
 
     public void tick() {
         tickCount++;
+        if(invuln)
+            invulnCount++;
+        else
+            invulnCount = 0;
+        if(invulnCount>invulnTime){
+            invulnCount = 0;
+            invuln = false;
+        }
         getInput();
         move();
         bounds = new Rectangle((int)x,(int)y+15,width,height-45);
         dmg1.tick();
+        dmg2.tick();
+        dmg3.tick();
+        dmg4.tick();
+        
         if(health == 4){
             cS = dmg1.getCurrentFrame();
+        }
+        else if(health == 3){
+            cS = dmg2.getCurrentFrame();
+        }else if(health == 2){
+            cS = dmg3.getCurrentFrame();
+        }else if(health == 1){
+            cS = dmg4.getCurrentFrame();
+        }
+        else if(health == 0){
+            destroyed.tick();
+            cS = destroyed.getCurrentFrame();
+            dead = true;
         }
         
         //unused code i think
@@ -220,11 +259,12 @@ public class Bomber extends Creature {
        //     b.tick();
         //}
     }
-
+    int invulnFrames = 10;
     public void render(Graphics g) {
-        
         g.drawImage(cS, (int) x, (int) y, width, height, null);
         g.drawImage(currentTurret, (int) x, (int) y, width, height, null);
+        
+            
         g.setColor(Color.black);
         g.drawRect((int)x,(int)y+15,width,height-45);
         

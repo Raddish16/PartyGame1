@@ -119,7 +119,7 @@ public class Assets {
             }
         }
         bomber = new ArrayList<>();
-        for (int n = 0; n < 352; n += 32) {
+        for (int n = 0; n < 576; n += 32) {
             bomber.add(bomberSheet.crop(0, n, 32, 32));
         }
         plane = new ArrayList<>();
