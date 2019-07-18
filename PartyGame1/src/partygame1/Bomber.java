@@ -18,13 +18,13 @@ import java.util.ArrayList;
  * @author Yasuki Wu
  */
 public class Bomber extends Creature {
-    private Animation dmg1,dmg2,dmg3,dmg4,destroyed;
+    private final Animation dmg1,dmg2,dmg3,dmg4,destroyed, invulnerable;
     private Handler handler;
     private int health, rotated, modX, modY, tickCount, invulnCount, invulnTime;
     private BufferedImage cS, newCs, currentTurret;
     private ArrayList<Bullet> turretBullets;
     private Rectangle bounds;
-    private boolean invuln, dead;
+    private boolean invuln;
 
     public Bomber(Handler handler, float x, float y, int width, int height) {
         super(handler, x, y, width, height);
@@ -34,7 +34,6 @@ public class Bomber extends Creature {
         bounds = new Rectangle((int)x,(int)y+15,width,height-45);
         invulnTime = 60;
         invuln = false;
-        dead = false;
         
         //animations
         //1 damage
@@ -52,6 +51,11 @@ public class Bomber extends Creature {
         //destroyed
         ArrayList<BufferedImage>d = new ArrayList<BufferedImage>(Assets.bomber.subList(9, 17));
         destroyed = new Animation(250,d);
+        //invulnerable
+        ArrayList<BufferedImage>i = new ArrayList<BufferedImage>();
+        i.add(Assets.bomber.get(0));
+        i.add(Assets.bomber.get(17));
+        invulnerable = new Animation(100,i);
         
         xMove = 0;
         yMove = 0;
@@ -223,6 +227,7 @@ public class Bomber extends Creature {
         dmg2.tick();
         dmg3.tick();
         dmg4.tick();
+        invulnerable.tick();
         
         if(health == 4){
             cS = dmg1.getCurrentFrame();
@@ -237,9 +242,10 @@ public class Bomber extends Creature {
         else if(health == 0){
             destroyed.tick();
             cS = destroyed.getCurrentFrame();
-            dead = true;
         }
-        
+        if(invuln&&health!=0){
+            cS = invulnerable.getCurrentFrame();
+        }
         //unused code i think
         if (xMove == 0 && yMove == (-1) * speed) {
             newCs = cS;
